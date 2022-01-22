@@ -6,10 +6,12 @@ public class GridMatrix : MonoBehaviour
 {
     private static List<List<GameObject> > matrix;
     
+    public static Grid selfGrid;
     public static int height = 12;
     public static int width = 20;
 
     private void Start() {
+        selfGrid = GetComponent<Grid>();
         matrix = new List<List<GameObject> >();
         for (int i = 0; i < height; i++) {
             matrix.Add(new List<GameObject>());

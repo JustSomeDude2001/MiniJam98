@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9059533033998644616}
   - component: {fileID: 4488080762746084951}
   - component: {fileID: 2500674323194934646}
+  - component: {fileID: 1314772183972659922}
   m_Layer: 0
   m_Name: Dummy
   m_TagString: Untagged
@@ -96,3 +97,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridPos: {x: 0, y: 0, z: 0}
+--- !u!114 &1314772183972659922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7389874221653784327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c84c42eb99d09f7d797b1262f586bb01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 5
+  rewardOnHit: 1
+  rewardOnDestroy: 3
+  metaChance: 0

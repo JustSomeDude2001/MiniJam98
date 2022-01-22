@@ -5,6 +5,10 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Vector3 playerPos;
+    /// <summary>
+    /// Core money. Used for buying constructions.
+    /// </summary>
+    public static int money = 0;
 
     private void Start() {
         playerPos = transform.position;
