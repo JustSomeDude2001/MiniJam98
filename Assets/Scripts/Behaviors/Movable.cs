@@ -8,8 +8,14 @@ public class Movable : MonoBehaviour
     
     public float speed = 1;
 
-    private void FixedUpdate() {
-        Vector3 newPos = transform.position + new Vector3(direction.x, direction.y, 0) * speed * Time.fixedDeltaTime;
-        transform.position = newPos;
+    Rigidbody2D selfRigidBody;
+
+    private void Start() {
+        selfRigidBody = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update() {
+        Vector3 newVelocity = new Vector3(direction.x, direction.y, 0) * speed;
+        selfRigidBody.velocity = newVelocity;
     }
 }
