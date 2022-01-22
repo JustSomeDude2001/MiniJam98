@@ -9,6 +9,5 @@ public class SnapsToCursor : MonoBehaviour
     {
         transform.position = CursorTracker.selfGrid.CellToWorld(CursorTracker.cursorPos) + 
                              CursorTracker.selfGrid.cellSize / 2f;
-        
     }
 }
