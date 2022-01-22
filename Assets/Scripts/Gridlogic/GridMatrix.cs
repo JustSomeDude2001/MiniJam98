@@ -34,4 +34,12 @@ public class GridMatrix : MonoBehaviour
         Destroy(position);
         matrix[position.y][position.x] = newObject;
     }
+
+    /// <summary>
+    /// Will need for upgrades (maybe)
+    /// </summary>
+    /// <param name="position"></param>
+    public static void Interact(Vector3Int position) {
+
+    }
 }

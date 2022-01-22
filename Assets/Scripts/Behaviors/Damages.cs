@@ -18,6 +18,7 @@ public class Damages : MonoBehaviour
         if (damageBlacklist.Contains(other.gameObject.tag)) {
             return;
         }
+        
         Destructible target = other.gameObject.GetComponent<Destructible>();
         if (target == null) {
             return;
