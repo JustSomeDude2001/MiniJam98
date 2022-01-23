@@ -25,6 +25,22 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Building"",
+                    ""type"": ""Button"",
+                    ""id"": ""6d53f79f-55ed-4056-9029-b7e64f9b399b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Deleting"",
+                    ""type"": ""Button"",
+                    ""id"": ""3edc4b62-662c-464f-83ed-c76d2830529b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -82,6 +98,28 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9bbd9186-cb88-48e2-aacf-d64989212d39"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Building"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b634de4-5bff-4da1-8cff-8e7eabe292db"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Deleting"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -91,6 +129,8 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
         // PlayerControls
         m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
         m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
+        m_PlayerControls_Building = m_PlayerControls.FindAction("Building", throwIfNotFound: true);
+        m_PlayerControls_Deleting = m_PlayerControls.FindAction("Deleting", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,11 +181,15 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
     private readonly InputActionMap m_PlayerControls;
     private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
     private readonly InputAction m_PlayerControls_Movement;
+    private readonly InputAction m_PlayerControls_Building;
+    private readonly InputAction m_PlayerControls_Deleting;
     public struct PlayerControlsActions
     {
         private @DefaultInputActions m_Wrapper;
         public PlayerControlsActions(@DefaultInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
+        public InputAction @Building => m_Wrapper.m_PlayerControls_Building;
+        public InputAction @Deleting => m_Wrapper.m_PlayerControls_Deleting;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -158,6 +202,12 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                 @Movement.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
+                @Building.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnBuilding;
+                @Building.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnBuilding;
+                @Building.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnBuilding;
+                @Deleting.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnDeleting;
+                @Deleting.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnDeleting;
+                @Deleting.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnDeleting;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -165,6 +215,12 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Building.started += instance.OnBuilding;
+                @Building.performed += instance.OnBuilding;
+                @Building.canceled += instance.OnBuilding;
+                @Deleting.started += instance.OnDeleting;
+                @Deleting.performed += instance.OnDeleting;
+                @Deleting.canceled += instance.OnDeleting;
             }
         }
     }
@@ -172,5 +228,7 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
     public interface IPlayerControlsActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnBuilding(InputAction.CallbackContext context);
+        void OnDeleting(InputAction.CallbackContext context);
     }
 }

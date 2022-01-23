@@ -1,0 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class LoadsScene : MonoBehaviour
+{
+    public string sceneName;
+    public bool started = false;
+    public float waitTime = 0;
+
+    public void Load() {
+        started = true;
+    }
+
+    private void Update() {
+        if (started) {
+            waitTime -= Time.deltaTime;
+            if (waitTime < 0) {
+                SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+            }
+        }
+    }
+}
