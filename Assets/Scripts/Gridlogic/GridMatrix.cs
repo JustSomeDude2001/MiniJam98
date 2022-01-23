@@ -25,6 +25,21 @@ public class GridMatrix : MonoBehaviour
         }
     }
 
+    public static Vector3Int GetRandomFreePos() {
+        List<Vector3Int> validPositions = new List<Vector3Int>();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (GetObject(new Vector3Int(j, i, 0)) == null) {
+                    validPositions.Add(new Vector3Int(j, i, 0));
+                }
+            }
+        }
+        if (validPositions.Count == 0) {
+            return Vector3Int.forward;
+        }
+        return validPositions[Random.Range(0, validPositions.Count)];
+    }
+
     public static GameObject GetObject(Vector3Int position) {
         return matrix[position.y][position.x];
     }

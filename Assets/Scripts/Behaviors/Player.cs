@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Player : MonoBehaviour
 {
+    public static bool isAlive;
     public static float lastClick;
     public static Vector3 playerPos;
     /// <summary>
@@ -15,6 +16,8 @@ public class Player : MonoBehaviour
     public static int money = 0;
 
     private void Start() {
+        isAlive = true;
+        lastClick = 0.25f;
         playerPos = transform.position;
     }
 
@@ -23,6 +26,7 @@ public class Player : MonoBehaviour
     }
 
     private void OnDestroy() {
+        isAlive = false;
         Debug.Log("Player Died");
     }
 }
