@@ -41,6 +41,9 @@ public class Mineable : MonoBehaviour
     public void Mine() {
         size--;
         Player.money += rewardOnHit;
+        if (Random.Range(0.0f, 1.0f) <= metaChance) {
+            Player.metaMoney++;
+        }
         CheckDepletion();
     }
 }

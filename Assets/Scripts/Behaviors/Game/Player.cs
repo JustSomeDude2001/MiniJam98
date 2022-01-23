@@ -15,7 +15,10 @@ public class Player : MonoBehaviour
     /// </summary>
     public static int money = 0;
 
+    public static int metaMoney = 0;
+
     private void Start() {
+        money = 0;
         isAlive = true;
         lastClick = 0.25f;
         playerPos = transform.position;

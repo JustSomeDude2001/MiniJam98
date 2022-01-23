@@ -32,7 +32,6 @@ public class Builds : MonoBehaviour
     public float lastBuild = -1;
 
     public void Build() {
-        
         if (CanBuild()) {
             Instantiate(building, transform.position, Quaternion.identity);
             Player.money -= cost;
