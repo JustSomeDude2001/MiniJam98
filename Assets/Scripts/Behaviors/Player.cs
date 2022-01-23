@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Player : MonoBehaviour
 {
+    public static float lastClick;
     public static Vector3 playerPos;
     /// <summary>
     /// Core money. Used for buying constructions.

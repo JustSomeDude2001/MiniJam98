@@ -27,6 +27,10 @@ public class Mines : MonoBehaviour
                     Vector3Int target = GridMatrix.selfGrid.WorldToCell(transform.position);
                     target.y += i;
                     target.x += j;
+                    if (target.y >= GridMatrix.height || target.y < 0 ||
+                        target.x >= GridMatrix.width || target.x < 0 ) {
+                        continue;
+                    }
                     GameObject targetObject = GridMatrix.GetObject(target);
                     Debug.Log("Checking Position:" + target.ToString() + " Have: " + (targetObject != null).ToString());
                     if (targetObject != null) {
