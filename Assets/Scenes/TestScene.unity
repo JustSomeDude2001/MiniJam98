@@ -1261,9 +1261,9 @@ MonoBehaviour:
   - 4
   moneyToSpawn: 0
   canSpawn: 0
-  spawnCooldownMultipliers: 0.95
-  spawnsOnEdge: 0
-  speedupCoefficient: 0
+  spawnCooldownMultipliers: 1
+  spawnsOnEdge: 1
+  speedupCoefficient: 0.95
 --- !u!1 &2086008000
 GameObject:
   m_ObjectHideFlags: 0

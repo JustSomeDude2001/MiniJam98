@@ -64,7 +64,9 @@ public class GridMatrix : MonoBehaviour
             }
         }
 
-        return selfGrid.CellToWorld(new Vector3Int(j, i, 0));
+        Vector3 newPos = selfGrid.CellToWorld(new Vector3Int(j, i, 0));
+        Debug.Log(newPos);
+        return newPos;
     }
 
     public static GameObject GetObject(Vector3Int position) {

@@ -31,6 +31,7 @@ public class BoardManager : MonoBehaviour
         float timeAfterSpawn = Time.time - lastSpawn;
 
             if (amount >= amountLimit) {
+                lastSpawn = Time.time;
                 return;
             }
 
@@ -39,10 +40,12 @@ public class BoardManager : MonoBehaviour
             }
 
             if (!canSpawn) {
+                lastSpawn = Time.time;
                 return;
             }
 
             if (timeAfterSpawn < timeToSpawn[amount] * spawnCooldownMultipliers) {
+                //lastSpawn = Time.time;
                 return;
             }
 
@@ -51,6 +54,7 @@ public class BoardManager : MonoBehaviour
             if (!spawnsOnEdge) {
                 Vector3Int newPos = GridMatrix.GetRandomFreePos();
                 if (newPos == null) {
+                    lastSpawn = Time.time;
                     return;
                 }
                 newObject = Instantiate(targetObject, GridMatrix.selfGrid.CellToWorld(newPos), Quaternion.identity);
