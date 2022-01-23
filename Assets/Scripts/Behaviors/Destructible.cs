@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Behavior for items that can take damage from attacks.
+/// </summary>
 public class Destructible : MonoBehaviour
 {
     private int healthCurrent = 1;

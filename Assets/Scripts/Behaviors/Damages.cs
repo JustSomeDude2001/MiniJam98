@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A behavior for items that damage on contact.
+/// </summary>
 public class Damages : MonoBehaviour
 {
     public int damageOnContact = 1;

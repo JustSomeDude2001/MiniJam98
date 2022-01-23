@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// General tracker for player on the playing field.
+/// </summary>
 public class Player : MonoBehaviour
 {
     public static Vector3 playerPos;

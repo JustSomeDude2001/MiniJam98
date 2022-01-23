@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// General tracker of items on the playing field.
+/// Attach this to grud for convenience.
+/// </summary>
 public class GridMatrix : MonoBehaviour
 {
     private static List<List<GameObject> > matrix;
@@ -33,7 +37,6 @@ public class GridMatrix : MonoBehaviour
     }
 
     public static void Build(Vector3Int position, GameObject newObject) {
-        Destroy(position);
         matrix[position.y][position.x] = newObject;
     }
 

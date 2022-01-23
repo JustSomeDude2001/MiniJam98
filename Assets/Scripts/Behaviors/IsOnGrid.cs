@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Used to attach gameObjects to grid and detach them
+/// per requirement automatically
+/// </summary>
 public class IsOnGrid : MonoBehaviour
 {
 

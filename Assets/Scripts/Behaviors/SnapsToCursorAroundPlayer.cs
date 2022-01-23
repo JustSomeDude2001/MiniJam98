@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Makes item snap to grid, while staying within
+/// a specific radius around player. 
+/// </summary>
 public class SnapsToCursorAroundPlayer : MonoBehaviour
 {
     public float radius = 4;

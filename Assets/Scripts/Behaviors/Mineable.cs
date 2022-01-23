@@ -35,6 +35,9 @@ public class Mineable : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Mine a mineable object.
+    /// </summary>
     public void Mine() {
         size--;
         Player.money += rewardOnHit;

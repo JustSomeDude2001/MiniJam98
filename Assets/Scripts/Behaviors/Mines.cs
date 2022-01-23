@@ -45,6 +45,9 @@ public class Mines : MonoBehaviour
     
     float lastMineOperation = -1;
     
+    /// <summary>
+    /// Will mine nearest (by cell) mineable every time cooldown resets
+    /// </summary>
     private void Update() {
         float elapsedTime = Time.time - lastMineOperation;
         if (elapsedTime >= miningCooldown) {
