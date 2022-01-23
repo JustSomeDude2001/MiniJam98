@@ -10,7 +10,7 @@ public class SnapsToCursor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = CursorTracker.selfGrid.CellToWorld(CursorTracker.cursorPos) + 
-                             CursorTracker.selfGrid.cellSize / 2f;
+        transform.position = GridMatrix.selfGrid.CellToWorld(CursorTracker.cursorPos) + 
+                             GridMatrix.selfGrid.cellSize / 2f;
     }
 }

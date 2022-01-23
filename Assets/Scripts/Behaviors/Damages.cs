@@ -30,7 +30,7 @@ public class Damages : MonoBehaviour
         if (Time.time - lastTime > cooldown) {
             target.TakeDamage(damageOnContact);
             lastTime = Time.time;
-            Debug.Log("Damage Inflicted");
+            //Debug.Log("Damage Inflicted");
         }
 
     }

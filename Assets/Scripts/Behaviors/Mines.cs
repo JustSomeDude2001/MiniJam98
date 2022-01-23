@@ -32,7 +32,7 @@ public class Mines : MonoBehaviour
                         continue;
                     }
                     GameObject targetObject = GridMatrix.GetObject(target);
-                    Debug.Log("Checking Position:" + target.ToString() + " Have: " + (targetObject != null).ToString());
+                    //Debug.Log("Checking Position:" + target.ToString() + " Have: " + (targetObject != null).ToString());
                     if (targetObject != null) {
                         Mineable result = targetObject.GetComponent<Mineable>();
                         if (result == null) {

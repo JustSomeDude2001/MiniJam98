@@ -13,11 +13,13 @@ public class IsOnGrid : MonoBehaviour
 
     void Start()
     {
-        Vector3Int gridPos = CursorTracker.selfGrid.WorldToCell(transform.position);
+        gridPos = GridMatrix.selfGrid.WorldToCell(transform.position);
         GridMatrix.Build(gridPos, gameObject);
+        Debug.Log(GridMatrix.GetObject(gridPos).ToString());
     }
 
     private void OnDestroy() {
-        GridMatrix.Destroy(gridPos);
+        if (GridMatrix.GetObject(gridPos) == gameObject)
+            GridMatrix.Destroy(gridPos);
     }
 }

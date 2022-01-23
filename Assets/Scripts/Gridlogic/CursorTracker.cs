@@ -10,20 +10,20 @@ using UnityEngine.InputSystem;
 public class CursorTracker : MonoBehaviour
 {
     /// <summary>
-    /// Position of the cursor on the grid
+    /// Position of the cursor on the grid (intended, not snapped to radius)
     /// </summary>
     [HideInInspector]
     public static Vector3Int cursorPos;
-    public static Grid selfGrid;
+    /// <summary>
+    /// Real grid position of cursor.
+    /// </summary>
+    public static Vector3Int cursorPosReal;
+    public Grid grid;
     public Camera mainCam;
-
-    private void Start() {
-        selfGrid = GetComponent<Grid>();
-    }
 
     private void Update() {
         Vector2 mousePos = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        cursorPos = (selfGrid.WorldToCell(mousePos));
+        cursorPos = (grid.WorldToCell(mousePos));
         if (cursorPos.x < 0) {
             cursorPos.x = 0;
         }
@@ -36,5 +36,6 @@ public class CursorTracker : MonoBehaviour
         if (cursorPos.y >= GridMatrix.height) {
             cursorPos.y = GridMatrix.height - 1;
         }
+        cursorPosReal = grid.WorldToCell(transform.position);
     }
 }

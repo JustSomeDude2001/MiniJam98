@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Builds : MonoBehaviour
 {
+    public float buildingCooldown;
     public GameObject building;
     public int cost;
 
@@ -12,6 +13,9 @@ public class Builds : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     public bool CanBuild() {
+        if (Time.time - lastBuild <= buildingCooldown) {
+            return false;
+        }
         if (Player.money < cost) {
             return false;
         }
@@ -24,11 +28,15 @@ public class Builds : MonoBehaviour
         }
     }
 
+    [HideInInspector]
+    public float lastBuild = -1;
+
     public void Build() {
+        
         if (CanBuild()) {
-            GridMatrix.Build(GridMatrix.selfGrid.WorldToCell(transform.position), 
-                             Instantiate(building, transform.position, Quaternion.identity));
+            Instantiate(building, transform.position, Quaternion.identity);
             Player.money -= cost;
+            lastBuild = Time.time;
         }
     }
 }

@@ -5,6 +5,6 @@ using UnityEngine;
 public class Deletes : MonoBehaviour
 {
     public void Delete() {
-        GridMatrix.Destroy(CursorTracker.cursorPos);
+        Destroy(GridMatrix.GetObject(CursorTracker.cursorPosReal));
     }
 }

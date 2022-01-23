@@ -30,21 +30,10 @@ public class GridMatrix : MonoBehaviour
     }
 
     public static void Destroy(Vector3Int position) {
-        if (matrix[position.y][position.x] != null) {
-            Destroy(matrix[position.y][position.x]);
-        }
         matrix[position.y][position.x] = null;
     }
 
     public static void Build(Vector3Int position, GameObject newObject) {
         matrix[position.y][position.x] = newObject;
-    }
-
-    /// <summary>
-    /// Will need for upgrades (maybe)
-    /// </summary>
-    /// <param name="position"></param>
-    public static void Interact(Vector3Int position) {
-
     }
 }

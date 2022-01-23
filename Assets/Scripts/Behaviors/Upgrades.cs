@@ -7,9 +7,17 @@ using UnityEngine;
 /// </summary>
 public class Upgrades : MonoBehaviour
 {
+    public float cooldown;    
+
+    float lastUpgrade = -1;
+
     public bool CanUpgrade() {
         GameObject targetObject = GridMatrix.GetObject(GridMatrix.selfGrid.WorldToCell(transform.position));
         
+        if (Time.time - lastUpgrade <= cooldown) {
+            return false;
+        }
+
         if (targetObject == null) {
             return false;
         }
@@ -31,16 +39,24 @@ public class Upgrades : MonoBehaviour
         return true;
     }
 
+    Builds selfBuilder;
+
     public void Upgrade() {
+        if (selfBuilder == null) {
+            selfBuilder = GetComponent <Builds>();
+        }
         if (!CanUpgrade()) {
             return;
         }
-
+        selfBuilder.lastBuild = Time.time;
         Upgradeable upgrade = GridMatrix.GetObject(GridMatrix.selfGrid.WorldToCell(transform.position)).GetComponent<Upgradeable>();
+
+        GameObject result = upgrade.nextUpgrade;
 
         Player.money -= upgrade.cost;
 
-        GridMatrix.Destroy(CursorTracker.cursorPos);
-        GridMatrix.Build(CursorTracker.cursorPos, Instantiate(upgrade.nextUpgrade, transform.position, Quaternion.identity));
+        Instantiate(result, transform.position, Quaternion.identity);
+        Destroy(upgrade.gameObject);
+        lastUpgrade = Time.time;
     }
 }

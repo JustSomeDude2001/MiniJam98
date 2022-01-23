@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5511538135012163264}
   - component: {fileID: 3376045496285923121}
   - component: {fileID: 3204975106796818310}
+  - component: {fileID: 844031619861962265}
   m_Layer: 0
   m_Name: AttackingWall
   m_TagString: Untagged
@@ -140,3 +141,16 @@ MonoBehaviour:
   damageBlacklist:
   - Player
   cooldown: 1
+--- !u!114 &844031619861962265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5357579080589995276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb04683799e49438903cce5871ed1b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridPos: {x: 0, y: 0, z: 0}
