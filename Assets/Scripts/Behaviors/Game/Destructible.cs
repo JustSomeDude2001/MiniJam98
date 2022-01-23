@@ -17,6 +17,9 @@ public class Destructible : MonoBehaviour
     public int healthMax = 1;
 
     private void Start() {
+        if (tag == "Wall") {
+            healthMax = (int)(healthMax * Player.GetModifier("wallHealth"));
+        }
         healthCurrent = healthMax;
     }
 

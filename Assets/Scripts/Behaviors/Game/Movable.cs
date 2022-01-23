@@ -15,6 +15,9 @@ public class Movable : MonoBehaviour
 
     private void Start() {
         selfRigidBody = GetComponent<Rigidbody2D>();
+        if (tag == "Player") {
+            speed *= Player.GetModifier("playerSpeed");
+        }
     }
 
     private void Update() {

@@ -17,6 +17,13 @@ public class Damages : MonoBehaviour
     public float cooldown = 1;
 
     float lastTime = -1;
+
+    private void Start() {
+        if (tag == "Wall") {
+            damageOnContact = (int)((float)damageOnContact *  Player.GetModifier("wallDamage"));
+        }
+    }
+
     private void OnCollisionStay2D(Collision2D other) {
         if (damageBlacklist.Contains(other.gameObject.tag)) {
             return;
