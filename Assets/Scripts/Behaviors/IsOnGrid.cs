@@ -15,7 +15,7 @@ public class IsOnGrid : MonoBehaviour
     {
         gridPos = GridMatrix.selfGrid.WorldToCell(transform.position);
         GridMatrix.Build(gridPos, gameObject);
-        Debug.Log(GridMatrix.GetObject(gridPos).ToString());
+        
     }
 
     private void OnDestroy() {

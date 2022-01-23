@@ -2,32 +2,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manager to control spawnrates of objects.
+/// </summary>
 public class BoardManager : MonoBehaviour
 {
     GridMatrix matrix;
 
-    public List <GameObject> minesPossible;
+    public GameObject targetObject;
+    public int amountLimit;
+    public int amount;
+    public List<float> timeToSpawn;
+    public int moneyToSpawn;
+    public bool canSpawn;
 
-    public List <int> minesAmountLimit;
-    public List <int> minesAmount;
-    public List <List<float> > minesTimeToSpawn;
+    public float spawnCooldownMultipliers;
 
-    public List <GameObject> enemiesPossible;
-    public List <int> enemiesAmountLimit;
-    public List <int> enemiesAmount;
-    public List <List<float> > enemiesTimeToSpawn;
-
-    public List <float> enemiesSpawnCooldownMultipliers;
+    public bool spawnsOnEdge;
+    public float speedupCoefficient;
 
     private void Start() {
         matrix = GetComponent<GridMatrix>();
     }
 
-    float lastMineSpawn = 0;
-    float lastEnemySpawn = 0;
+    float lastSpawn = 0;
 
     private void Update() {
-        float timeAfterMineSpawn = Time.time - lastMineSpawn;
-        float timeAfterEnemySpawn = Time.time - lastEnemySpawn;
+        float timeAfterSpawn = Time.time - lastSpawn;
+
+            if (amount >= amountLimit) {
+                return;
+            }
+
+            if (Player.money >= moneyToSpawn) {
+                canSpawn = true;
+            }
+
+            if (!canSpawn) {
+                return;
+            }
+
+            if (timeAfterSpawn < timeToSpawn[amount] * spawnCooldownMultipliers) {
+                return;
+            }
+
+            GameObject newObject;
+
+            if (!spawnsOnEdge) {
+                Vector3Int newPos = GridMatrix.GetRandomFreePos();
+                if (newPos == null) {
+                    return;
+                }
+                newObject = Instantiate(targetObject, GridMatrix.selfGrid.CellToWorld(newPos), Quaternion.identity);
+            } else {
+                newObject = Instantiate(targetObject, GridMatrix.GetRandomEdgePos(), Quaternion.identity);
+            }
+            lastSpawn = Time.time;
+            TrackedOnManager tracker = newObject.AddComponent<TrackedOnManager>();
+            tracker.SetManager(this, speedupCoefficient);
     }
+
 }

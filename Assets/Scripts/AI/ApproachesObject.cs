@@ -14,7 +14,7 @@ public class ApproachesObject : MonoBehaviour
 
     private void Update() {
         if (target == null) {
-            return;
+            target = GameObject.FindGameObjectWithTag("Player");
         }
         Vector3 direction = target.transform.position - transform.position;
         direction.Normalize();

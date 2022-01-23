@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class TrackedOnManager : MonoBehaviour
 {
-    public bool isMine;
-    public int index;
+    public BoardManager manager;
+
+    public float coefficientOnDestroy;
+
+    public void SetManager(BoardManager manager, float coefficientOnDestroy) {
+        this.manager = manager;
+        manager.amount++;
+        this.coefficientOnDestroy = coefficientOnDestroy;
+    }
+
+    private void OnDestroy() {
+        manager.amount--;
+        manager.spawnCooldownMultipliers *= coefficientOnDestroy;
+    }
 }

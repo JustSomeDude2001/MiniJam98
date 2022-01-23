@@ -41,7 +41,6 @@ public class Mineable : MonoBehaviour
     public void Mine() {
         size--;
         Player.money += rewardOnHit;
-        Debug.Log("Awarded " + rewardOnDestroy.ToString());
         CheckDepletion();
     }
 }

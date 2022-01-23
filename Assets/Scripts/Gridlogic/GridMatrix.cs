@@ -25,6 +25,10 @@ public class GridMatrix : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Get random grid position that is not occupied.
+    /// </summary>
+    /// <returns>A cell position in grid</returns>
     public static Vector3Int GetRandomFreePos() {
         List<Vector3Int> validPositions = new List<Vector3Int>();
         for (int i = 0; i < height; i++) {
@@ -38,6 +42,29 @@ public class GridMatrix : MonoBehaviour
             return Vector3Int.forward;
         }
         return validPositions[Random.Range(0, validPositions.Count)];
+    }
+
+
+    public static Vector3 GetRandomEdgePos() {
+        int i = 0;
+        int j = 0;
+        if (Random.Range(0, 2) == 0) {
+            if (Random.Range(0, 2) == 0) {
+                i = height;
+            } else {
+                i = 0;
+            }
+            j = Random.Range(0, width + 1);
+        } else {
+            i = Random.Range(0, height + 1);
+            if (Random.Range(0, 2) == 0) {
+                j = width;
+            } else {
+                j = 0;
+            }
+        }
+
+        return selfGrid.CellToWorld(new Vector3Int(j, i, 0));
     }
 
     public static GameObject GetObject(Vector3Int position) {
