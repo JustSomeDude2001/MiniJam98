@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3299141155785839956}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c3c84a7a4ef172e8e1d07b7615ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthMax: 5
+  healthMax: 50
 --- !u!114 &9166459344077202249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b8531b3aea349868b2954d955250e18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeUntilCanUpgrade: 1
+  timeUntilCanUpgrade: 0.15
   nextUpgrade: {fileID: 5357579080589995276, guid: cc3bf62cfec71879d95239b768dc7a4f, type: 3}
   cost: 0
 --- !u!114 &3299141155785839956
