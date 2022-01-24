@@ -364,6 +364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c3c84a7a4ef172e8e1d07b7615ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dyingTime: 1
+  dying: 0
   healthMax: 100
 --- !u!61 &326064687
 BoxCollider2D:
@@ -1188,7 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2500f2cccb7d43c3787b5e719e228e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingCooldown: 1
+  buildingCooldown: 0.05
   building: {fileID: 173016598775591663, guid: 418375b22d0fc9c47a0827488737ba33, type: 3}
   cost: 0
   lastBuild: -1

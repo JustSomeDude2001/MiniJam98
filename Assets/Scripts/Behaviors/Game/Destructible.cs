@@ -10,7 +10,7 @@ public class Destructible : MonoBehaviour
     private int healthCurrent = 1;
 
     public float dyingTime = 1;
-    bool dying = false;
+    public bool dying = false;
 
     /// <summary>
     /// Maximum health can be safely modified as needed - clamping to
