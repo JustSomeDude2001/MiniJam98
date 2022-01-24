@@ -65,7 +65,7 @@ public class GridMatrix : MonoBehaviour
         }
 
         Vector3 newPos = selfGrid.CellToWorld(new Vector3Int(j, i, 0));
-        Debug.Log(newPos);
+        //Debug.Log(newPos);
         return newPos;
     }
 

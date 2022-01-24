@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// General tracker for player on the playing field.
@@ -14,7 +15,7 @@ public class Player : MonoBehaviour
     /// Core money. Used for buying constructions.
     /// </summary>
     public static int money = 0;
-    public static int metaMoney = 10000;
+    public static int metaMoney = 0;
 
     public static SortedDictionary<string, float> modifiers = new SortedDictionary<string, float>();
     public static SortedDictionary<string, int> upgradeLevels = new SortedDictionary<string, int>();
@@ -60,6 +61,7 @@ public class Player : MonoBehaviour
 
     private void OnDestroy() {
         isAlive = false;
-        Debug.Log("Player Died");
+        LoadsScene loader = GetComponent<LoadsScene>();
+        SceneManager.LoadScene(loader.sceneName, LoadSceneMode.Single);
     }
 }
