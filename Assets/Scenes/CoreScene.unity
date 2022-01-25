@@ -1172,7 +1172,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874981043}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
   m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1190,9 +1190,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2500f2cccb7d43c3787b5e719e228e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingCooldown: 0.05
+  buildingCooldown: 0.5
   building: {fileID: 173016598775591663, guid: 418375b22d0fc9c47a0827488737ba33, type: 3}
-  cost: 0
+  cost: 1
   lastBuild: -1
 --- !u!114 &1874981048
 MonoBehaviour:
