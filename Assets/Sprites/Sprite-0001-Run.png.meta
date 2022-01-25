@@ -14,6 +14,18 @@ TextureImporter:
   - first:
       213: 5726113894134031364
     second: Sprite-0001-Run_3
+  - first:
+      213: 5377449670374049767
+    second: Sprite-0001-Run_4
+  - first:
+      213: 8172887763944007616
+    second: Sprite-0001-Run_5
+  - first:
+      213: 311599660749447395
+    second: Sprite-0001-Run_6
+  - first:
+      213: -2063663459276954648
+    second: Sprite-0001-Run_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -218,6 +230,90 @@ TextureImporter:
       bones: []
       spriteID: 404a94b9f3e377f40800000000000000
       internalID: 5726113894134031364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-0001-Run_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e7cf28fbf980aa40800000000000000
+      internalID: 5377449670374049767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-0001-Run_5
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c7e4079e1eeb6170800000000000000
+      internalID: 8172887763944007616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-0001-Run_6
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e06a139d36035400800000000000000
+      internalID: 311599660749447395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sprite-0001-Run_7
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e3e7dd74056c53e0800000000000000
+      internalID: -2063663459276954648
       vertices: []
       indices: 
       edges: []

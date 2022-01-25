@@ -35,7 +35,7 @@ public class BoardManager : MonoBehaviour
                 return;
             }
 
-            if (Player.money >= moneyToSpawn) {
+            if (Player.moneyAllTime >= moneyToSpawn) {
                 canSpawn = true;
             }
 

@@ -42,10 +42,22 @@ public class Damages : MonoBehaviour
 
     }
 
+
+
     /// <summary>
     /// This is used to allow for aura damage.
     /// </summary>
-    /// <param name="other"></param>
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (damageBlacklist.Contains(other.gameObject.tag)) {
+            return;
+        }
+        
+        Destructible target = other.gameObject.GetComponent<Destructible>();
+        if (target == null) {
+            return;
+        }
+        target.lastAuraDamageTime = Time.time;
+    }
     private void OnTriggerStay2D(Collider2D other) {
         if (damageBlacklist.Contains(other.gameObject.tag)) {
             return;
@@ -56,10 +68,11 @@ public class Damages : MonoBehaviour
             return;
         }
         
-        if (Time.time - lastTime > cooldown) {
-            target.TakeDamage(damageOnContact);
-            lastTime = Time.time;
-            //Debug.Log("Damage Inflicted");
+        if (Time.time - target.lastAuraDamageTime < cooldown) {
+            return;
         }
+        target.TakeDamage(damageOnContact);
+        lastTime = Time.time;
+        target.lastAuraDamageTime = Time.time;
     }
 }

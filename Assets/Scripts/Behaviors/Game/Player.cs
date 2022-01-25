@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     /// </summary>
     public static int money = 0;
     public static int metaMoney = 0;
+    public static int moneyAllTime = 0;
 
     public static SortedDictionary<string, float> modifiers = new SortedDictionary<string, float>();
     public static SortedDictionary<string, int> upgradeLevels = new SortedDictionary<string, int>();
@@ -50,6 +51,7 @@ public class Player : MonoBehaviour
 
     private void Start() {
         money = 0;
+        moneyAllTime = 0;
         isAlive = true;
         lastClick = 0.25f;
         playerPos = transform.position;

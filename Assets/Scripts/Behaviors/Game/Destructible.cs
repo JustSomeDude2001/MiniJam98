@@ -18,7 +18,8 @@ public class Destructible : MonoBehaviour
     /// current health.
     /// </summary>
     public int healthMax = 1;
-
+    [HideInInspector]
+    public float lastAuraDamageTime;
     Animator myAnimator;
 
     private void Start() {

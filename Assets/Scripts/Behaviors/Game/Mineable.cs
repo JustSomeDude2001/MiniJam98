@@ -31,6 +31,7 @@ public class Mineable : MonoBehaviour
     private void CheckDepletion() {
         if (size <= 0) {
             Player.money += rewardOnDestroy;
+            Player.moneyAllTime += rewardOnDestroy;
             Destructible destructible = GetComponent<Destructible>();
             if (destructible != null) {
                 destructible.Heal(-destructible.healthMax);
@@ -49,6 +50,7 @@ public class Mineable : MonoBehaviour
         }
         size--;
         Player.money += rewardOnHit;
+        Player.moneyAllTime += rewardOnHit;
         if (Random.Range(0.0f, 1.0f) <= metaChance) {
             Player.metaMoney++;
         }
