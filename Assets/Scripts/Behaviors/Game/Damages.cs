@@ -18,7 +18,12 @@ public class Damages : MonoBehaviour
 
     float lastTime = -1;
 
+    [Tooltip("Leave empty if you want gameObject's animator to be chosen by default.")]
+    public Animator targetAnimator;
+
     private void Start() {
+        if (targetAnimator == null)
+            targetAnimator = GetComponent<Animator>();
         if (tag == "Wall") {
             damageOnContact = (int)((float)damageOnContact *  Player.GetModifier("wallDamage"));
         }
@@ -35,6 +40,7 @@ public class Damages : MonoBehaviour
         }
         
         if (Time.time - lastTime > cooldown) {
+            targetAnimator.SetBool("isAttacking", true);
             target.TakeDamage(damageOnContact);
             lastTime = Time.time;
             //Debug.Log("Damage Inflicted");
@@ -56,6 +62,8 @@ public class Damages : MonoBehaviour
         if (target == null) {
             return;
         }
+            
+        targetAnimator.SetBool("isAttacking", true);
         target.lastAuraDamageTime = Time.time;
     }
     private void OnTriggerStay2D(Collider2D other) {
@@ -71,8 +79,18 @@ public class Damages : MonoBehaviour
         if (Time.time - target.lastAuraDamageTime < cooldown) {
             return;
         }
+
+        targetAnimator.SetBool("isAttacking", true);
         target.TakeDamage(damageOnContact);
         lastTime = Time.time;
         target.lastAuraDamageTime = Time.time;
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        targetAnimator.SetBool("isAttacking", false);
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+        targetAnimator.SetBool("isAttacking", false);
     }
 }
