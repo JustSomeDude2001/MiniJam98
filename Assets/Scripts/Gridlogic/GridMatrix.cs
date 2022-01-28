@@ -11,8 +11,8 @@ public class GridMatrix : MonoBehaviour
     private static List<List<GameObject> > matrix;
     
     public static Grid selfGrid;
-    public static int height = 12;
-    public static int width = 20;
+    public static int height = 31;
+    public static int width = 28;
 
     private void Start() {
         selfGrid = GetComponent<Grid>();

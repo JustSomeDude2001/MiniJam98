@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6463421791451564145}
   - component: {fileID: 1927504460271146028}
   - component: {fileID: 9095013578199295879}
+  - component: {fileID: -2692323945044020776}
   m_Layer: 0
   m_Name: Mine2
   m_TagString: Untagged
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7438228282106070515, guid: f6472cdf9501ac89786810b1b0e4d7f0, type: 3}
-  m_Color: {r: 0.9622642, g: 0.15886435, b: 0.15886435, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -131,6 +132,7 @@ MonoBehaviour:
   dyingTime: 1
   dying: 0
   healthMax: 120
+  lastAuraDamageTime: 0
 --- !u!61 &1927504460271146028
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -144,7 +146,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -155,7 +157,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8, y: 0.4}
   m_EdgeRadius: 0
 --- !u!95 &9095013578199295879
 Animator:
@@ -176,3 +178,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-2692323945044020776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110924917793491493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 618a24eb68ccab675b1904583393e99e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
