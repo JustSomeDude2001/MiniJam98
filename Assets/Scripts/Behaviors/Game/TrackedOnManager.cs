@@ -16,6 +16,6 @@ public class TrackedOnManager : MonoBehaviour
 
     private void OnDestroy() {
         manager.amount--;
-        manager.spawnCooldownMultipliers *= coefficientOnDestroy;
+        manager.currentCooldownMultiplier *= coefficientOnDestroy;
     }
 }

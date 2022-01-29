@@ -117,6 +117,7 @@ MonoBehaviour:
   - Wall
   - Player
   cooldown: 0.5
+  targetAnimator: {fileID: 6826655002410365286}
 --- !u!1 &5357579080589995276
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,6 +132,7 @@ GameObject:
   - component: {fileID: 3376045496285923121}
   - component: {fileID: 844031619861962265}
   - component: {fileID: 2658070447766301459}
+  - component: {fileID: 6826655002410365286}
   m_Layer: 0
   m_Name: AttackingWall
   m_TagString: Wall
@@ -271,3 +273,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618a24eb68ccab675b1904583393e99e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6826655002410365286
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5357579080589995276}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d44cab4ad35768e09acbcf1f7f4e1fa2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

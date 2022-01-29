@@ -66,7 +66,6 @@ public class Destructible : MonoBehaviour
         if (dying == true) {
             dyingTime -= Time.fixedDeltaTime;
             if (dyingTime <= 0) {
-                Debug.Log("Must Delete Object");
                 Destroy(gameObject);
             }
         }
