@@ -14,6 +14,11 @@ public class Mines : MonoBehaviour
     /// </summary>
     public float miningCooldown;
 
+    private void Start() {
+        miningCooldown *= Player.GetModifier("miningCooldown");
+        radius *= Player.GetModifier("miningRadius");
+    }
+
     public Mineable GetMineableInRadius() {
         for (int k = 0; k < radius; k++) {
             for (int i = -k; i <= k; i++) {

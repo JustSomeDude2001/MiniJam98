@@ -9,14 +9,27 @@ public class Destructible : MonoBehaviour
 {
     private int healthCurrent = 1;
 
+    public float dyingTime = 1;
+    public bool dying = false;
+
     /// <summary>
     /// Maximum health can be safely modified as needed - clamping to
     /// prevent immortality or the like is done in methods concerning
     /// current health.
     /// </summary>
     public int healthMax = 1;
+    [HideInInspector]
+    public float lastAuraDamageTime;
+    Animator myAnimator;
 
     private void Start() {
+        myAnimator = GetComponent<Animator>();
+        if (tag == "Wall") {
+            healthMax = (int)(healthMax * Player.GetModifier("wallHealth"));
+        }
+        if (tag == "Player") {
+            healthMax = (int)(healthMax * Player.GetModifier("playerHealth"));
+        }
         healthCurrent = healthMax;
     }
 
@@ -28,11 +41,34 @@ public class Destructible : MonoBehaviour
     /// Used to prevent health overflow and track when to kill object.
     /// </summary>
     private void ClampHealth() {
+        if (dying) {
+            return;
+        }
         if (healthCurrent > healthMax) {
             healthCurrent = healthMax;
         }
         if (healthCurrent <= 0) {
-            Destroy(gameObject);
+            if (myAnimator != null)
+                myAnimator.SetBool("isDead", true);
+            Movable mover = GetComponent<Movable>();
+            if (mover != null) {
+                mover.enabled = false;
+            }
+            Damages damager = GetComponent<Damages>();
+            if (damager != null) {
+                damager.enabled = false;
+            }
+            dying = true;
+        }
+    }
+
+    private void FixedUpdate() {
+        if (dying == true) {
+            dyingTime -= Time.fixedDeltaTime;
+            if (dyingTime <= 0) {
+                Debug.Log("Must Delete Object");
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -47,4 +83,5 @@ public class Destructible : MonoBehaviour
         healthCurrent += value;
         ClampHealth();
     }
+
 }

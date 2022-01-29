@@ -18,6 +18,22 @@ public class SnapsToCursorAroundPlayer : MonoBehaviour
 
         Vector3Int cellPos = GridMatrix.selfGrid.WorldToCell(Player.playerPos + offset);
 
+        if (cellPos.y < 0) {
+            cellPos.y = 0;
+        }
+
+        if (cellPos.x < 0) {
+            cellPos.x = 0;
+        }
+
+        if (cellPos.y >= GridMatrix.height) {
+            cellPos.y = GridMatrix.height - 1;
+        }
+
+        if (cellPos.x >= GridMatrix.width) {
+            cellPos.x = GridMatrix.width - 1;
+        }
+
         Vector3 newPos = GridMatrix.selfGrid.CellToWorld(cellPos) + 
                          GridMatrix.selfGrid.cellSize / 2f;
         

@@ -11,7 +11,7 @@ public class GridMatrix : MonoBehaviour
     private static List<List<GameObject> > matrix;
     
     public static Grid selfGrid;
-    public static int height = 12;
+    public static int height = 19;
     public static int width = 20;
 
     private void Start() {
@@ -65,7 +65,7 @@ public class GridMatrix : MonoBehaviour
         }
 
         Vector3 newPos = selfGrid.CellToWorld(new Vector3Int(j, i, 0));
-        Debug.Log(newPos);
+        //Debug.Log(newPos);
         return newPos;
     }
 

@@ -35,7 +35,7 @@ public class BoardManager : MonoBehaviour
                 return;
             }
 
-            if (Player.money >= moneyToSpawn) {
+            if (Player.moneyAllTime >= moneyToSpawn) {
                 canSpawn = true;
             }
 
@@ -57,7 +57,7 @@ public class BoardManager : MonoBehaviour
                     lastSpawn = Time.time;
                     return;
                 }
-                newObject = Instantiate(targetObject, GridMatrix.selfGrid.CellToWorld(newPos), Quaternion.identity);
+                newObject = Instantiate(targetObject, GridMatrix.selfGrid.CellToWorld(newPos) + GridMatrix.selfGrid.cellSize / 2f, Quaternion.identity);
             } else {
                 newObject = Instantiate(targetObject, GridMatrix.GetRandomEdgePos(), Quaternion.identity);
             }

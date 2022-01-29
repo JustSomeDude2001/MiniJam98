@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 3e9e06126c242ed7785e20d180cd5ae9
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Chonk
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: ec11ca8bf608737d39d671dd56fa2ed6, type: 3}
+  - {fileID: 12800000, guid: 109a7939871b551f590828471b6919f0, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
