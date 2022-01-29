@@ -70,6 +70,12 @@ public class GridMatrix : MonoBehaviour
     }
 
     public static GameObject GetObject(Vector3Int position) {
+        if (position.y < 0 || position.x < 0) {
+            return null;
+        }
+        if (position.y >= height || position.x >= width) {
+            return null;
+        }
         return matrix[position.y][position.x];
     }
 

@@ -31,6 +31,10 @@ public class Jumps : MonoBehaviour
         if (Time.time - lastJumpTime < cooldown) {
             return false;
         }
+
+        if (isJumping == true) {
+            return false;
+        }
         
         Vector3 offset = new Vector3(selfMovable.direction.x, selfMovable.direction.y, 0) * selfMovable.speed * duration;
 
@@ -53,7 +57,7 @@ public class Jumps : MonoBehaviour
         selfAnimator.SetBool("isJumping", true);
         selfCollider.isTrigger = true;
         selfOrderer.enabled = false;
-        selfRenderer.sortingOrder = -1;
+        selfRenderer.sortingOrder = 32767;
     }
 
     public void Land() {
@@ -65,6 +69,7 @@ public class Jumps : MonoBehaviour
 
     private void Update() {
         if (isJumping) {
+            selfRenderer.sortingOrder = 32767;
             if (Time.time - lastJumpTime > duration) {
                 Land();
             }

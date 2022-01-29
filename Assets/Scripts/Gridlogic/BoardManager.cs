@@ -11,12 +11,17 @@ public class BoardManager : MonoBehaviour
 
     public GameObject targetObject;
     public int amountLimit;
-    public int amount;
+    [HideInInspector]
+    public int amount = 0;
     public List<float> timeToSpawn;
     public int moneyToSpawn;
     public bool canSpawn;
 
-    public float spawnCooldownMultipliers;
+    /// <summary>
+    /// Initial cooldown multiplier
+    /// </summary>
+    [HideInInspector]
+    public float currentCooldownMultiplier = 1;
 
     public bool spawnsOnEdge;
     public float speedupCoefficient;
@@ -44,7 +49,7 @@ public class BoardManager : MonoBehaviour
                 return;
             }
 
-            if (timeAfterSpawn < timeToSpawn[amount] * spawnCooldownMultipliers) {
+            if (timeAfterSpawn < timeToSpawn[amount] * currentCooldownMultiplier) {
                 //lastSpawn = Time.time;
                 return;
             }
