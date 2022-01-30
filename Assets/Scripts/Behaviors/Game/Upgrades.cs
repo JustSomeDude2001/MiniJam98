@@ -11,6 +11,12 @@ public class Upgrades : MonoBehaviour
 
     float lastUpgrade = -1;
 
+    Animator selfAnimator;
+
+    private void Start() {
+        selfAnimator = GetComponent<Animator>();
+    }
+
     public bool CanUpgrade() {
         GameObject targetObject = GridMatrix.GetObject(GridMatrix.selfGrid.WorldToCell(transform.position));
         
@@ -58,5 +64,11 @@ public class Upgrades : MonoBehaviour
         Instantiate(result, transform.position, Quaternion.identity);
         Destroy(upgrade.gameObject);
         lastUpgrade = Time.time;
+    }
+    
+    private void Update() {
+        if (selfAnimator != null) {
+            selfAnimator.SetBool("canUpgrade", CanUpgrade());
+        }
     }
 }
