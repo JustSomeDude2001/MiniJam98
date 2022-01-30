@@ -5,44 +5,27 @@ using UnityEngine;
 public class MetaUpgrade : MonoBehaviour
 {
     public string modifierName;
-    public int level;
-    public float value;
-    public int cost;
+    public List <float> values;
+    public List <int> costs;
 
-    public List<string> prerequisiteLevelNames = new List<string>();
-    public List<int> prerequisiteLevelValues = new List<int>();
+    [HideInInspector]
+    public int currentLevel;
     
-    [HideInInspector]
-    public bool isAvailable = false;
-    [HideInInspector]
-    public bool isPurchased = false;
-
     private void Refresh() {
-        isAvailable = true;
-        if (Player.GetLevel(modifierName) >= level) {
-            isAvailable = false;
-            isPurchased = true;
-            return;
-        }
-        for (int i = 0; i < prerequisiteLevelNames.Count; i++) {
-            if (Player.GetLevel(prerequisiteLevelNames[i]) < prerequisiteLevelValues[i]) {
-                isAvailable = false;
-                break;
-            }
-        }
+        currentLevel = Player.GetLevel(modifierName);
     }
     
     public int GetCost() {
         Refresh();
-        return cost;
+        if (currentLevel + 1 >= values.Count) {
+            return 999;
+        }
+        return costs[currentLevel + 1];
     }
 
     public bool CanUpgrade() {
         Refresh();
-        if (!isAvailable) {
-            return false;
-        }
-        if (Player.GetLevel(modifierName) >= level) {
+        if (currentLevel + 1 >= values.Count) {
             return false;
         }
         if (GetCost() > Player.metaMoney) {
@@ -55,14 +38,14 @@ public class MetaUpgrade : MonoBehaviour
         if (!CanUpgrade()) {
             return;
         }
-        isPurchased = true;
         Player.metaMoney -= GetCost();
-        Player.SetLevel(modifierName, level);
-        Player.SetModifier(modifierName, value);
+        currentLevel++;
+        Player.SetLevel(modifierName, currentLevel);
+        Player.SetModifier(modifierName, values[currentLevel]);
     }
 
-    private void Start() {
-        Refresh();
+    // Done just in case some modifiers behave in a special way.
+    private void OnDestroy() {
+        Player.SetModifier(modifierName, values[currentLevel]);
     }
-
 }
