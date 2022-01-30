@@ -5,10 +5,10 @@ using TMPro;
 
 public class DisplaysMetaMoney : MonoBehaviour
 {
-    TextMeshProUGUI selfText;
+    TextMeshPro selfText;
     
     private void Start() {
-        selfText = GetComponent<TextMeshProUGUI>();
+        selfText = GetComponent<TextMeshPro>();
     }
 
     private void Update() {

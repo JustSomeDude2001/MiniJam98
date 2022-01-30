@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7911161381559280927}
   m_Layer: 0
   m_Name: DamageAura
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
   - Wall
   - Player
   cooldown: 0.5
+  lastAttackTime: -1
   targetAnimator: {fileID: 6826655002410365286}
 --- !u!1 &5357579080589995276
 GameObject:
@@ -133,6 +134,7 @@ GameObject:
   - component: {fileID: 844031619861962265}
   - component: {fileID: 2658070447766301459}
   - component: {fileID: 6826655002410365286}
+  - component: {fileID: 3941631295698843144}
   m_Layer: 0
   m_Name: AttackingWall
   m_TagString: Wall
@@ -292,3 +294,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3941631295698843144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5357579080589995276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce894ccaa7b5447c68f754b7936564a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnedObject: {fileID: 2885940410563056911, guid: e8e9e0d0879ffad4bb08b34059eb1778, type: 3}
+  baseSpawnChance: 1

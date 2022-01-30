@@ -16,7 +16,8 @@ public class Damages : MonoBehaviour
     [Tooltip("Cooldown until damage on contact can be taken again")]
     public float cooldown = 1;
 
-    float lastTime = -1;
+    [HideInInspector]
+    public float lastAttackTime = -1;
 
     [Tooltip("Leave empty if you want gameObject's animator to be chosen by default.")]
     public Animator targetAnimator;
@@ -26,6 +27,9 @@ public class Damages : MonoBehaviour
             targetAnimator = GetComponent<Animator>();
         if (tag == "Wall") {
             damageOnContact = (int)((float)damageOnContact *  Player.GetModifier("wallDamage"));
+        }
+        if (tag == "Mine") {
+            damageOnContact = (int)((float)damageOnContact *  Player.GetModifier("mineDamage"));
         }
     }
 
@@ -39,10 +43,11 @@ public class Damages : MonoBehaviour
             return;
         }
         
-        if (Time.time - lastTime > cooldown) {
-            targetAnimator.SetBool("isAttacking", true);
+        if (Time.time - lastAttackTime > cooldown) {
+            if (targetAnimator != null)
+                targetAnimator.SetBool("isAttacking", true);
             target.TakeDamage(damageOnContact);
-            lastTime = Time.time;
+            lastAttackTime = Time.time;
             //Debug.Log("Damage Inflicted");
         }
 
@@ -63,7 +68,8 @@ public class Damages : MonoBehaviour
             return;
         }
             
-        targetAnimator.SetBool("isAttacking", true);
+        if (targetAnimator != null)
+            targetAnimator.SetBool("isAttacking", true);
         target.lastAuraDamageTime = Time.time;
     }
     private void OnTriggerStay2D(Collider2D other) {
@@ -80,17 +86,20 @@ public class Damages : MonoBehaviour
             return;
         }
 
-        targetAnimator.SetBool("isAttacking", true);
+        if (targetAnimator != null)
+            targetAnimator.SetBool("isAttacking", true);
         target.TakeDamage(damageOnContact);
-        lastTime = Time.time;
+        lastAttackTime = Time.time;
         target.lastAuraDamageTime = Time.time;
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        targetAnimator.SetBool("isAttacking", false);
+        if (targetAnimator != null)
+            targetAnimator.SetBool("isAttacking", false);
     }
 
     private void OnCollisionExit2D(Collision2D other) {
-        targetAnimator.SetBool("isAttacking", false);
+        if (targetAnimator != null)
+            targetAnimator.SetBool("isAttacking", false);
     }
 }

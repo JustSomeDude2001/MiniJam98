@@ -8,6 +8,12 @@ public class Builds : MonoBehaviour
     public GameObject building;
     public int cost;
 
+    Animator selfAnimator;
+
+    private void Start() {
+        selfAnimator = GetComponent<Animator>();
+    }
+
     /// <summary>
     /// Check if can build on gameObject's cell.
     /// </summary>
@@ -36,6 +42,12 @@ public class Builds : MonoBehaviour
             Instantiate(building, transform.position, Quaternion.identity);
             Player.money -= cost;
             lastBuild = Time.time;
+        }
+    }
+
+    private void Update() {
+        if (selfAnimator != null) {
+            selfAnimator.SetBool("canBuild", CanBuild());
         }
     }
 }

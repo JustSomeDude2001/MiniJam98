@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3299141155785839956}
   - component: {fileID: 1699842369918319792}
   - component: {fileID: 2743499798506835048}
+  - component: {fileID: 1505553784731796460}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Wall
@@ -189,3 +190,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 618a24eb68ccab675b1904583393e99e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1505553784731796460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173016598775591663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce894ccaa7b5447c68f754b7936564a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnedObject: {fileID: 2885940410563056911, guid: e8e9e0d0879ffad4bb08b34059eb1778, type: 3}
+  baseSpawnChance: 1

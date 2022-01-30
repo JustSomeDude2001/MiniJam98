@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// A property of a cursor to be able to upgrade items.
+/// A property of a cursor to be able to upgrade buildings during core gameplay.
 /// </summary>
 public class Upgrades : MonoBehaviour
 {
     public float cooldown;    
 
     float lastUpgrade = -1;
+
+    Animator selfAnimator;
+
+    private void Start() {
+        selfAnimator = GetComponent<Animator>();
+    }
 
     public bool CanUpgrade() {
         GameObject targetObject = GridMatrix.GetObject(GridMatrix.selfGrid.WorldToCell(transform.position));
@@ -58,5 +64,11 @@ public class Upgrades : MonoBehaviour
         Instantiate(result, transform.position, Quaternion.identity);
         Destroy(upgrade.gameObject);
         lastUpgrade = Time.time;
+    }
+    
+    private void Update() {
+        if (selfAnimator != null) {
+            selfAnimator.SetBool("canUpgrade", CanUpgrade());
+        }
     }
 }

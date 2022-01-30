@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     /// Core money. Used for buying constructions.
     /// </summary>
     public static int money = 0;
-    public static int metaMoney = 0;
+    public static int metaMoney = 1000;
     public static int moneyAllTime = 0;
 
     public static SortedDictionary<string, float> modifiers = new SortedDictionary<string, float>();

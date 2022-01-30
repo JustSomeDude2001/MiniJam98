@@ -41,6 +41,14 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""MetaUpgrade"",
+                    ""type"": ""Button"",
+                    ""id"": ""a618ff32-7b03-4a87-bb4d-dda942dcb47b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -120,6 +128,17 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Deleting"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""941b88a5-44fc-4184-94cf-30e06c1f3128"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MetaUpgrade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -131,6 +150,7 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
         m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
         m_PlayerControls_Building = m_PlayerControls.FindAction("Building", throwIfNotFound: true);
         m_PlayerControls_Deleting = m_PlayerControls.FindAction("Deleting", throwIfNotFound: true);
+        m_PlayerControls_MetaUpgrade = m_PlayerControls.FindAction("MetaUpgrade", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,6 +203,7 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerControls_Movement;
     private readonly InputAction m_PlayerControls_Building;
     private readonly InputAction m_PlayerControls_Deleting;
+    private readonly InputAction m_PlayerControls_MetaUpgrade;
     public struct PlayerControlsActions
     {
         private @DefaultInputActions m_Wrapper;
@@ -190,6 +211,7 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
         public InputAction @Building => m_Wrapper.m_PlayerControls_Building;
         public InputAction @Deleting => m_Wrapper.m_PlayerControls_Deleting;
+        public InputAction @MetaUpgrade => m_Wrapper.m_PlayerControls_MetaUpgrade;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -208,6 +230,9 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                 @Deleting.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnDeleting;
                 @Deleting.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnDeleting;
                 @Deleting.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnDeleting;
+                @MetaUpgrade.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMetaUpgrade;
+                @MetaUpgrade.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMetaUpgrade;
+                @MetaUpgrade.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMetaUpgrade;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -221,6 +246,9 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                 @Deleting.started += instance.OnDeleting;
                 @Deleting.performed += instance.OnDeleting;
                 @Deleting.canceled += instance.OnDeleting;
+                @MetaUpgrade.started += instance.OnMetaUpgrade;
+                @MetaUpgrade.performed += instance.OnMetaUpgrade;
+                @MetaUpgrade.canceled += instance.OnMetaUpgrade;
             }
         }
     }
@@ -230,5 +258,6 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnBuilding(InputAction.CallbackContext context);
         void OnDeleting(InputAction.CallbackContext context);
+        void OnMetaUpgrade(InputAction.CallbackContext context);
     }
 }
