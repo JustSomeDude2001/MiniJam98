@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 2586236770448232576}
   - component: {fileID: 2586236770448232578}
   - component: {fileID: 2586236770448232577}
+  - component: {fileID: 5203524446503648777}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -143,6 +144,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 3edc4b62-662c-464f-83ed-c76d2830529b
     m_ActionName: PlayerControls/Deleting[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a618ff32-7b03-4a87-bb4d-dda942dcb47b
+    m_ActionName: PlayerControls/MetaUpgrade[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControls
@@ -161,18 +166,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05}
+  m_Offset: {x: 0.0020558834, y: -0.059691936}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.31}
+    oldSize: {x: 0.16, y: 0.2}
     newSize: {x: 0.548, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.08}
+  m_Size: {x: 0.09471345, y: 0.061790824}
   m_EdgeRadius: 0
 --- !u!50 &2586236770448232583
 Rigidbody2D:
@@ -263,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 5
   miningCooldown: 1
+  visualPickaxe: {fileID: 0}
 --- !u!114 &2586236770448232579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +284,7 @@ MonoBehaviour:
   sceneName: MetaHub
   started: 0
   waitTime: 0
+  isPortal: 0
 --- !u!114 &2586236770448232576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,3 +328,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627870fd44e2e48498ab195eeb5e5d22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5203524446503648777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586236770448232606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 1
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.03471744, y: -0.09849058, z: 0}
+  - {x: 0.02717033, y: -0.10301882, z: 0}
+  - {x: 0.048302203, y: -0.05697959, z: 0}
+  - {x: -0.036226854, y: -0.053960748, z: 0}
+  m_ShapePathHash: -2097354407
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -93882
