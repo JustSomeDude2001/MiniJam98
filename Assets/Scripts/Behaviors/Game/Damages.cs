@@ -28,6 +28,9 @@ public class Damages : MonoBehaviour
         if (tag == "Wall") {
             damageOnContact = (int)((float)damageOnContact *  Player.GetModifier("wallDamage"));
         }
+        if (tag == "Mine") {
+            damageOnContact = (int)((float)damageOnContact *  Player.GetModifier("mineDamage"));
+        }
     }
 
     private void OnCollisionStay2D(Collision2D other) {
