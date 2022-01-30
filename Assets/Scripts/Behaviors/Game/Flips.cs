@@ -17,7 +17,7 @@ public class Flips : MonoBehaviour
 
 
     private void Update() {
-        if (tag == "Player" && selfMovable.direction.magnitude > 0) {
+        if (selfMovable.direction.magnitude > 0) {
             if (selfRigidBody.velocity.x < 0) {
                 selfRenderer.flipX = !initial;
             } else {
