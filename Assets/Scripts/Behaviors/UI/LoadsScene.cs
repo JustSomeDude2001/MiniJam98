@@ -8,6 +8,7 @@ public class LoadsScene : MonoBehaviour
     public string sceneName;
     public bool started = false;
     public float waitTime = 0;
+    public bool isPortal = false;
 
     public void Load() {
         started = true;
@@ -19,6 +20,12 @@ public class LoadsScene : MonoBehaviour
             if (waitTime < 0) {
                 SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (isPortal) {
+            Load();
         }
     }
 }

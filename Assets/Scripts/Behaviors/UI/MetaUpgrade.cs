@@ -5,28 +5,32 @@ using UnityEngine;
 public class MetaUpgrade : MonoBehaviour
 {
     public string modifierName;
-    public float multiplier = 1;
-    public float offset = 0;
-    public int cost;
-    public float costProgression;
-    public int maxLevel;
-    public int currentLevel;
+    public List <float> values;
+    public List <int> costs;
 
-    private void Start() {
+    [HideInInspector]
+    public int currentLevel;
+    
+    private void Refresh() {
         currentLevel = Player.GetLevel(modifierName);
-        for (int i = 0; i < currentLevel; i++) {
-            cost = (int)(cost * costProgression);
-        }
     }
     
-    public bool CanUpgrade() {
-        if (currentLevel >= maxLevel) {
-            return false;
+    public int GetCost() {
+        Refresh();
+        if (currentLevel + 1 >= values.Count) {
+            return 999;
         }
-        if (Player.metaMoney < cost) {
-            return false;
-        }
+        return costs[currentLevel + 1];
+    }
 
+    public bool CanUpgrade() {
+        Refresh();
+        if (currentLevel + 1 >= values.Count) {
+            return false;
+        }
+        if (GetCost() > Player.metaMoney) {
+            return false;
+        }
         return true;
     }
 
@@ -34,14 +38,14 @@ public class MetaUpgrade : MonoBehaviour
         if (!CanUpgrade()) {
             return;
         }
-        Player.metaMoney -= cost;
-        float currentMod = Player.GetModifier(modifierName);
-        currentMod *= multiplier;
-        currentMod += offset;
-        cost = (int)(cost * costProgression);
+        Player.metaMoney -= GetCost();
         currentLevel++;
         Player.SetLevel(modifierName, currentLevel);
-        Player.SetModifier(modifierName, currentMod);
+        Player.SetModifier(modifierName, values[currentLevel]);
     }
 
+    // Done just in case some modifiers behave in a special way.
+    private void OnDestroy() {
+        Player.SetModifier(modifierName, values[currentLevel]);
+    }
 }

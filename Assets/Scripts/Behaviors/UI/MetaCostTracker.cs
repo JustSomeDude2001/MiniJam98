@@ -6,25 +6,22 @@ using TMPro;
 public class MetaCostTracker : MonoBehaviour
 {
     public MetaUpgrade tracked;
-    public Color positiveColor;
-    public Color negativeColor;
 
-    TextMeshProUGUI display;
+    TextMeshPro display;
 
     // Start is called before the first frame update
     void Start()
     {
-        display = GetComponent<TextMeshProUGUI>();
+        display = GetComponent<TextMeshPro>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        display.text = tracked.cost.ToString();
-        if (tracked.CanUpgrade()) {
-            display.color = positiveColor;
+        if (tracked.GetCost() == 999) {
+            display.text = "MAX LVL";
         } else {
-            display.color = negativeColor;
+            display.text = tracked.GetCost().ToString();
         }
     }
 }

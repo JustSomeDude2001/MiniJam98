@@ -58,6 +58,9 @@ public class Destructible : MonoBehaviour
             if (damager != null) {
                 damager.enabled = false;
             }
+            if (tag == "Player") {
+                Player.isAlive = false;
+            }
             dying = true;
         }
     }

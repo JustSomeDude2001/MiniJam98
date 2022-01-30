@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// A property of a cursor to be able to upgrade items.
+/// A property of a cursor to be able to upgrade buildings during core gameplay.
 /// </summary>
 public class Upgrades : MonoBehaviour
 {
