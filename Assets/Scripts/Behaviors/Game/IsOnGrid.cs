@@ -18,7 +18,20 @@ public class IsOnGrid : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Items that spawn after destruction tend to spawn on the next scene, hence
+    /// we need to make sure they are properly deleted.
+    /// </summary>
+    private void Update() {
+        if (GridMatrix.selfGrid == null) {
+            Destroy(gameObject);
+        }
+    }
+
     private void OnDestroy() {
+        if (GridMatrix.selfGrid == null) {
+            return;
+        }
         if (GridMatrix.GetObject(gridPos) == gameObject)
             GridMatrix.Destroy(gridPos);
     }

@@ -86,4 +86,14 @@ public class GridMatrix : MonoBehaviour
     public static void Build(Vector3Int position, GameObject newObject) {
         matrix[position.y][position.x] = newObject;
     }
+
+    private void OnDestroy() {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (matrix[i][j] != null) {
+                    Destroy(matrix[i][j]);
+                }
+            }
+        }
+    }
 }

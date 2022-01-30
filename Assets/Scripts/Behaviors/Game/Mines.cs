@@ -14,6 +14,9 @@ public class Mines : MonoBehaviour
     /// </summary>
     public float miningCooldown;
 
+    [Tooltip("Set to visual-flair object (pickaxe) that indicates mined object")]
+    public GameObject visualPickaxe;
+
     private void Start() {
         miningCooldown *= Player.GetModifier("miningCooldown");
         radius *= Player.GetModifier("miningRadius");
@@ -64,6 +67,12 @@ public class Mines : MonoBehaviour
             if (target != null) {
                 target.Mine();
                 lastMineOperation = Time.time;
+                if (visualPickaxe != null) {
+                    visualPickaxe.transform.position = target.transform.position;
+                    visualPickaxe.SetActive(true);
+                }
+            } else {
+                visualPickaxe.SetActive(false);
             }
         }
     }
