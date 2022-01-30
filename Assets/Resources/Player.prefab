@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2586236770448232604}
   - component: {fileID: 2586236770448232605}
   - component: {fileID: 2586236770448232602}
-  - component: {fileID: 2586236770448232600}
   - component: {fileID: 2586236770448232583}
   - component: {fileID: 2586236770448232603}
   - component: {fileID: 2586236770448232582}
@@ -23,6 +22,7 @@ GameObject:
   - component: {fileID: 2586236770448232578}
   - component: {fileID: 2586236770448232577}
   - component: {fileID: 5203524446503648777}
+  - component: {fileID: 2819272374361475180}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -153,32 +153,6 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!61 &2586236770448232600
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2586236770448232606}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0020558834, y: -0.059691936}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.2}
-    newSize: {x: 0.548, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.09471345, y: 0.061790824}
-  m_EdgeRadius: 0
 --- !u!50 &2586236770448232583
 Rigidbody2D:
   serializedVersion: 4
@@ -353,4 +327,20 @@ MonoBehaviour:
   - {x: -0.036226854, y: -0.053960748, z: 0}
   m_ShapePathHash: -2097354407
   m_Mesh: {fileID: 0}
-  m_InstanceId: -93882
+  m_InstanceId: -8010
+--- !u!70 &2819272374361475180
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586236770448232606}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.00000012137322, y: 0.044347744}
+  m_Size: {x: 0.12421872, y: 0.08869601}
+  m_Direction: 1
