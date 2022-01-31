@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Destructible : MonoBehaviour
 {
+    public string modifierName;
     private int healthCurrent = 1;
 
     public float dyingTime = 1;
@@ -24,12 +25,7 @@ public class Destructible : MonoBehaviour
 
     private void Start() {
         myAnimator = GetComponent<Animator>();
-        if (tag == "Wall") {
-            healthMax = (int)(healthMax * Player.GetModifier("wallHealth"));
-        }
-        if (tag == "Player") {
-            healthMax = (int)(healthMax * Player.GetModifier("playerHealth"));
-        }
+        healthMax = (int)(healthMax * Player.GetModifier(modifierName) * Player.GetModifier(Player.ToTemp(modifierName)));
         healthCurrent = healthMax;
     }
 

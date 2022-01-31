@@ -8,7 +8,14 @@ using UnityEngine;
 /// </summary>
 public class SnapsToCursorAroundPlayer : MonoBehaviour
 {
+    public string modifierName;
+
     public float radius = 4;
+
+    private void Start() {
+        radius = radius * Player.GetModifier(modifierName) * Player.GetModifier(Player.ToTemp(modifierName));
+    }
+
     void Update()
     {
         Vector3 offset = GridMatrix.selfGrid.CellToWorld(CursorTracker.cursorPos) - Player.playerPos;

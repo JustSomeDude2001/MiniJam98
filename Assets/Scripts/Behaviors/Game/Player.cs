@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class Player : MonoBehaviour
 {
+    public static bool purchasedMetaUpgrade = false;
     public static bool isAlive;
     public static float lastClick;
     public static Vector3 playerPos;
@@ -20,7 +21,23 @@ public class Player : MonoBehaviour
 
     public static SortedDictionary<string, float> modifiers = new SortedDictionary<string, float>();
     public static SortedDictionary<string, int> upgradeLevels = new SortedDictionary<string, int>();
-    
+
+    /// <summary>
+    /// Converts normal modifierName to temporary modifier name.
+    /// </summary>
+    /// <param name="name"></param>
+    /// <returns></returns>
+    public static string ToTemp(string name) {
+        return name + "Temp";
+    }
+
+    public static bool IsTempUpgrade(string name) {
+        if (name.EndsWith("Temp")) {
+            return true;
+        }
+        return false;
+    }
+
     public static float GetModifier(string name) {
         if (!modifiers.ContainsKey(name)) {
             modifiers.Add(name, 1f);
@@ -62,6 +79,13 @@ public class Player : MonoBehaviour
     }
 
     private void OnDestroy() {
+        foreach (string key in modifiers.Keys) {
+            if (IsTempUpgrade(key)) {
+                modifiers[key] = 1;
+                upgradeLevels[key] = 0;
+            }
+        }
+
         isAlive = false;
         LoadsScene loader = GetComponent<LoadsScene>();
         SceneManager.LoadScene(loader.sceneName, LoadSceneMode.Single);

@@ -12,6 +12,16 @@ public class MetaUpgrade : MonoBehaviour
     public List <string> requirementNames;
     public List <int> requirementLevels;
 
+    public bool isTemp = false;
+
+    private void Start() {
+        if (isTemp) {
+            if (!Player.IsTempUpgrade(modifierName)) {
+                modifierName = Player.ToTemp(modifierName);
+            }
+        }
+    }
+
     public int GetCost() {
         return cost;
     }
@@ -40,6 +50,7 @@ public class MetaUpgrade : MonoBehaviour
         Player.SetLevel(modifierName, level);
         Player.SetModifier(modifierName, modifier);
         Player.metaMoney -= cost;
+        Player.purchasedMetaUpgrade = true;
     }
 
     public bool TryUpgrade() {
