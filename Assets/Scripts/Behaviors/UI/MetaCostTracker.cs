@@ -18,11 +18,10 @@ public class MetaCostTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        display.text = tracked.GetCost().ToString();
-        if (tracked.isPurchased) {
-            display.text = "SOLD";
-        } else if (tracked.isAvailable == false) {
-            display.text = "LOCKED";
+        if (tracked.GetCost() == 999) {
+            display.text = "MAX LVL";
+        } else {
+            display.text = tracked.GetCost().ToString();
         }
     }
 }
