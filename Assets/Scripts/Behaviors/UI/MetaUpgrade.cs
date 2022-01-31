@@ -5,47 +5,48 @@ using UnityEngine;
 public class MetaUpgrade : MonoBehaviour
 {
     public string modifierName;
-    public List <float> values;
-    public List <int> costs;
+    public float modifier;
+    public int cost;
+    public int level;
 
-    [HideInInspector]
-    public int currentLevel;
-    
-    private void Refresh() {
-        currentLevel = Player.GetLevel(modifierName);
-    }
-    
+    public List <string> requirementNames;
+    public List <int> requirementLevels;
+
     public int GetCost() {
-        Refresh();
-        if (currentLevel + 1 >= values.Count) {
-            return 999;
-        }
-        return costs[currentLevel + 1];
+        return cost;
     }
 
-    public bool CanUpgrade() {
-        Refresh();
-        if (currentLevel + 1 >= values.Count) {
-            return false;
-        }
-        if (GetCost() > Player.metaMoney) {
-            return false;
+    public bool IsPurchased() {
+        return Player.GetLevel(modifierName) >= level;
+    }
+
+    public bool IsAvailable() {
+        for (int i = 0; i < requirementLevels.Count; i++) {
+            if (Player.GetLevel(requirementNames[i]) < requirementLevels[i]) {
+                return false;
+            }
         }
         return true;
     }
 
-    public void Upgrade() {
-        if (!CanUpgrade()) {
-            return;
+    public bool CanUpgrade() {
+        if (!IsPurchased() && IsAvailable() && cost <= Player.metaMoney) {
+            return true;
         }
-        Player.metaMoney -= GetCost();
-        currentLevel++;
-        Player.SetLevel(modifierName, currentLevel);
-        Player.SetModifier(modifierName, values[currentLevel]);
+        return false;
     }
 
-    // Done just in case some modifiers behave in a special way.
-    private void OnDestroy() {
-        Player.SetModifier(modifierName, values[currentLevel]);
+    private void Upgrade() {
+        Player.SetLevel(modifierName, level);
+        Player.SetModifier(modifierName, modifier);
+        Player.metaMoney -= cost;
+    }
+
+    public bool TryUpgrade() {
+        if (CanUpgrade()) {
+            Upgrade();
+            return true;
+        }
+        return false;
     }
 }
