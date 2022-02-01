@@ -20,9 +20,13 @@ public class Movable : MonoBehaviour
         selfAnimator = GetComponent<Animator>();
     }
 
-    private void FixedUpdate() {
-        float currentSpeed = speed * Player.GetModifier(modifierName) * Player.GetModifier(Player.ToTemp(modifierName));
-        Vector3 newVelocity = new Vector3(direction.x, direction.y, 0) * speed;
+    public float GetSpeed() {
+        return speed * Player.GetModifier(modifierName) * Player.GetModifier(Player.ToTemp(modifierName));
+    }
+
+    private void Update() {
+        float currentSpeed = GetSpeed();
+        Vector3 newVelocity = new Vector3(direction.x, direction.y, 0) * currentSpeed;
         selfRigidBody.velocity = newVelocity;
         if (tag == "Player") {
             selfAnimator.SetBool("isIdle", !(newVelocity.magnitude > 0));

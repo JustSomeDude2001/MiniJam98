@@ -40,7 +40,7 @@ public class TempUpgrade : MonoBehaviour
     }
 
     public bool CanUpgrade() {
-        if (!IsMaxLevel() && IsAvailable() && cost[GetNextLevel()] <= Player.metaMoney) {
+        if (!IsMaxLevel() && IsAvailable() && cost[GetNextLevel()] <= Player.money) {
             return true;
         }
         return false;
@@ -50,14 +50,13 @@ public class TempUpgrade : MonoBehaviour
         int nextLevel = GetNextLevel();
         Player.SetLevel(modifierName, nextLevel);
         Player.SetModifier(modifierName, modifier[nextLevel]);
-        Player.metaMoney -= cost[nextLevel];
+        Debug.Log(Player.GetModifier(modifierName));
+        Player.money -= cost[nextLevel];
     }
 
-    public bool TryUpgrade() {
+    public void TryUpgrade() {
         if (CanUpgrade()) {
             Upgrade();
-            return true;
         }
-        return false;
     }
 }

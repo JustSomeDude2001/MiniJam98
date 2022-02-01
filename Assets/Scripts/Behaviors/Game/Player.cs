@@ -69,12 +69,18 @@ public class Player : MonoBehaviour
     }
 
     private void Start() {
+        List <string> temps = new List<string>();
         foreach (string key in modifiers.Keys) {
             if (IsTempUpgrade(key)) {
-                modifiers[key] = 1;
-                upgradeLevels[key] = 0;
+                temps.Add(key);
             }
         }
+
+        for (int i = 0; i < temps.Count; i++) {
+            modifiers[temps[i]] = 1;
+            upgradeLevels[temps[i]] = 0;
+        }
+
         money = 0;
         moneyAllTime = 0;
         isAlive = true;
