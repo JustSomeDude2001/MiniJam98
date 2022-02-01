@@ -12,6 +12,10 @@ public class MetaUpgrade : MonoBehaviour
     public List <string> requirementNames;
     public List <int> requirementLevels;
 
+    /// <summary>
+    /// Useful if you want temporary upgrades for meta currency.
+    /// So not use otherwise.
+    /// </summary>
     public bool isTemp = false;
 
     private void Start() {

@@ -8,7 +8,14 @@ public class TempUpgrade : MonoBehaviour
     public List<float> modifier;
     public List<int> cost;
 
+    /// <summary>
+    /// Note: Requirements only apply for the first tier of upgrade.
+    /// </summary>
     public List <string> requirementNames;
+
+    /// <summary>
+    /// Note: Requirements only apply for the first tier of upgrade.
+    /// </summary>
     public List <int> requirementLevels;
 
 
