@@ -16,9 +16,7 @@ public class MetaUpgradeOnKey : MonoBehaviour
         if (currentUpgrade == null) {
             return;
         }
-        if (currentUpgrade.CanUpgrade()) {
-            currentUpgrade.Upgrade();
-        }
+        currentUpgrade.TryUpgrade();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

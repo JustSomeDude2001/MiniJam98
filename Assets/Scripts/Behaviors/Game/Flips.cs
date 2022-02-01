@@ -17,6 +17,10 @@ public class Flips : MonoBehaviour
 
 
     private void Update() {
+        if (Player.isOnPause) {
+            return;
+        }
+        
         if (Mathf.Abs(selfMovable.direction.x) > 0.01) {
             if (selfMovable.direction.x < 0) {
                 selfRenderer.flipX = !initial;

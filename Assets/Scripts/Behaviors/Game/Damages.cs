@@ -8,6 +8,7 @@ using UnityEngine;
 /// </summary>
 public class Damages : MonoBehaviour
 {
+    public string modifierName;
     public int damageOnContact = 1;
 
     [Tooltip("Add tags that will be ignored on contact")]
@@ -25,12 +26,10 @@ public class Damages : MonoBehaviour
     private void Start() {
         if (targetAnimator == null)
             targetAnimator = GetComponent<Animator>();
-        if (tag == "Wall") {
-            damageOnContact = (int)((float)damageOnContact *  Player.GetModifier("wallDamage"));
-        }
-        if (tag == "Mine") {
-            damageOnContact = (int)((float)damageOnContact *  Player.GetModifier("mineDamage"));
-        }
+    }
+
+    public int GetDamage() {
+        return (int)(damageOnContact * Player.GetModifier(Player.ToTemp(modifierName)) * Player.GetModifier(modifierName));
     }
 
     private void OnCollisionStay2D(Collision2D other) {
@@ -46,7 +45,7 @@ public class Damages : MonoBehaviour
         if (Time.time - lastAttackTime > cooldown) {
             if (targetAnimator != null)
                 targetAnimator.SetBool("isAttacking", true);
-            target.TakeDamage(damageOnContact);
+            target.TakeDamage(GetDamage());
             lastAttackTime = Time.time;
             //Debug.Log("Damage Inflicted");
         }
@@ -88,7 +87,7 @@ public class Damages : MonoBehaviour
 
         if (targetAnimator != null)
             targetAnimator.SetBool("isAttacking", true);
-        target.TakeDamage(damageOnContact);
+        target.TakeDamage(GetDamage());
         lastAttackTime = Time.time;
         target.lastAuraDamageTime = Time.time;
     }

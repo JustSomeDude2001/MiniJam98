@@ -18,6 +18,10 @@ public class Upgrades : MonoBehaviour
     }
 
     public bool CanUpgrade() {
+        if (Player.isOnPause) {
+            return false;
+        }
+
         GameObject targetObject = GridMatrix.GetObject(GridMatrix.selfGrid.WorldToCell(transform.position));
         
         if (Time.time - lastUpgrade <= cooldown) {

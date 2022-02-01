@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MetaHub.unity
     guid: 2b0e2458451a2672f973888b8bff4767
+  - enabled: 1
+    path: Assets/Scenes/PauseScene.unity
+    guid: 51d71df9054c7b2c684f6d80c51541fc
   m_configObjects: {}

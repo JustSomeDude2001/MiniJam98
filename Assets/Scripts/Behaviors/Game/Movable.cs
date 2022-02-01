@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class Movable : MonoBehaviour
 {
+    public string modifierName;
     public Vector2 direction = Vector2.zero;
     
     public float speed = 1;
@@ -18,13 +19,15 @@ public class Movable : MonoBehaviour
     private void Start() {
         selfRigidBody = GetComponent<Rigidbody2D>();
         selfAnimator = GetComponent<Animator>();
-        if (tag == "Player") {
-            speed *= Player.GetModifier("playerSpeed");
-        }
     }
 
-    private void FixedUpdate() {
-        var newVelocity = direction * speed;
+    public float GetSpeed() {
+        return speed * Player.GetModifier(modifierName) * Player.GetModifier(Player.ToTemp(modifierName));
+    }
+
+    private void Update() {
+        float currentSpeed = GetSpeed();
+        Vector3 newVelocity = new Vector3(direction.x, direction.y, 0) * currentSpeed;
         selfRigidBody.velocity = newVelocity;
         if (tag == "Player")
         {
