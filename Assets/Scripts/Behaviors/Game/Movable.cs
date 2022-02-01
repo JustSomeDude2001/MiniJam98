@@ -13,6 +13,7 @@ public class Movable : MonoBehaviour
 
     Rigidbody2D selfRigidBody;
     Animator selfAnimator;
+    [SerializeField] private ParticleSystem Dust;
 
     private void Start() {
         selfRigidBody = GetComponent<Rigidbody2D>();
@@ -23,10 +24,20 @@ public class Movable : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        Vector3 newVelocity = new Vector3(direction.x, direction.y, 0) * speed;
+        var newVelocity = direction * speed;
         selfRigidBody.velocity = newVelocity;
-        if (tag == "Player") {
+        if (tag == "Player")
+        {
             selfAnimator.SetBool("isIdle", !(newVelocity.magnitude > 0));
+            if (direction.magnitude > 0.1)
+            {
+                Dust.Play();
+            }
+            else
+            {
+                Dust.Stop();
+            }
         }
+        
     }
 }
