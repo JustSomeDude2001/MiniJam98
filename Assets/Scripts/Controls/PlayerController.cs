@@ -49,6 +49,14 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""7dfe9cdf-0121-46ec-83b8-f00a2051676a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -139,6 +147,17 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                     ""action"": ""MetaUpgrade"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""921c51a4-d00f-4e33-b717-c20393ff3f17"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -151,6 +170,7 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
         m_PlayerControls_Building = m_PlayerControls.FindAction("Building", throwIfNotFound: true);
         m_PlayerControls_Deleting = m_PlayerControls.FindAction("Deleting", throwIfNotFound: true);
         m_PlayerControls_MetaUpgrade = m_PlayerControls.FindAction("MetaUpgrade", throwIfNotFound: true);
+        m_PlayerControls_Pause = m_PlayerControls.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -204,6 +224,7 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerControls_Building;
     private readonly InputAction m_PlayerControls_Deleting;
     private readonly InputAction m_PlayerControls_MetaUpgrade;
+    private readonly InputAction m_PlayerControls_Pause;
     public struct PlayerControlsActions
     {
         private @DefaultInputActions m_Wrapper;
@@ -212,6 +233,7 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
         public InputAction @Building => m_Wrapper.m_PlayerControls_Building;
         public InputAction @Deleting => m_Wrapper.m_PlayerControls_Deleting;
         public InputAction @MetaUpgrade => m_Wrapper.m_PlayerControls_MetaUpgrade;
+        public InputAction @Pause => m_Wrapper.m_PlayerControls_Pause;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -233,6 +255,9 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                 @MetaUpgrade.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMetaUpgrade;
                 @MetaUpgrade.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMetaUpgrade;
                 @MetaUpgrade.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMetaUpgrade;
+                @Pause.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -249,6 +274,9 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                 @MetaUpgrade.started += instance.OnMetaUpgrade;
                 @MetaUpgrade.performed += instance.OnMetaUpgrade;
                 @MetaUpgrade.canceled += instance.OnMetaUpgrade;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -259,5 +287,6 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
         void OnBuilding(InputAction.CallbackContext context);
         void OnDeleting(InputAction.CallbackContext context);
         void OnMetaUpgrade(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 /// <summary>
 /// General tracker for player on the playing field.
+/// Also tracks general game state.
 /// </summary>
 public class Player : MonoBehaviour
 {
+    public static bool isOnPause = false;
     public static bool purchasedMetaUpgrade = false;
     public static bool isAlive;
     public static float lastClick;
@@ -67,6 +69,12 @@ public class Player : MonoBehaviour
     }
 
     private void Start() {
+        foreach (string key in modifiers.Keys) {
+            if (IsTempUpgrade(key)) {
+                modifiers[key] = 1;
+                upgradeLevels[key] = 0;
+            }
+        }
         money = 0;
         moneyAllTime = 0;
         isAlive = true;
@@ -79,13 +87,6 @@ public class Player : MonoBehaviour
     }
 
     private void OnDestroy() {
-        foreach (string key in modifiers.Keys) {
-            if (IsTempUpgrade(key)) {
-                modifiers[key] = 1;
-                upgradeLevels[key] = 0;
-            }
-        }
-
         isAlive = false;
         LoadsScene loader = GetComponent<LoadsScene>();
         SceneManager.LoadScene(loader.sceneName, LoadSceneMode.Single);

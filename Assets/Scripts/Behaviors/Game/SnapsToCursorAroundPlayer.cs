@@ -18,6 +18,10 @@ public class SnapsToCursorAroundPlayer : MonoBehaviour
 
     void Update()
     {
+        if (Player.isOnPause) {
+            return;
+        }
+        
         Vector3 offset = GridMatrix.selfGrid.CellToWorld(CursorTracker.cursorPos) - Player.playerPos;
         if (offset.magnitude > radius) {
             offset *= radius / offset.magnitude;
