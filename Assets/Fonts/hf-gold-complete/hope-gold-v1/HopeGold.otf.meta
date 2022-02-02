@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: a7ccaea0055037f4bba8ff9d5af872e5
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - HopeGold
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: bac7395d06ed7538db3687c5400220b8, type: 3}
+  - {fileID: 12800000, guid: 65b9be5945a4c9143966c285c8d61a0d, type: 3}
+  - {fileID: 12800000, guid: b667d5f6f11fcc203a26ed7ad8f2b42b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

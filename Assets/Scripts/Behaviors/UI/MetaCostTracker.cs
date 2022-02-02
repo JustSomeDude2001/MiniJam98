@@ -9,6 +9,9 @@ public class MetaCostTracker : MonoBehaviour
 
     TextMeshPro display;
 
+    public string notUnlockedText = "LOCKED";
+    public string purchasedText = "SOLD";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +21,10 @@ public class MetaCostTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tracked.GetCost() == 999) {
-            display.text = "MAX LVL";
+        if (tracked.IsPurchased()) {
+            display.text = purchasedText;
+        } else if(!tracked.IsAvailable()) {
+            display.text = notUnlockedText;
         } else {
             display.text = tracked.GetCost().ToString();
         }

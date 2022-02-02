@@ -19,6 +19,9 @@ public class Builds : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     public bool CanBuild() {
+        if (Player.isOnPause) {
+            return false;
+        }
         if (Time.time - lastBuild <= buildingCooldown) {
             return false;
         }

@@ -7,12 +7,15 @@ public class InputController : MonoBehaviour
 {
     Movable myMovable;
 
-    private void Start() {
+    private void Start()
+    {
         myMovable = GetComponent<Movable>();
         myMovable.direction = Vector2.zero;
     }
 
-    public void OnMovement(InputAction.CallbackContext context) {
+    public void OnMovement(InputAction.CallbackContext context)
+    {
         myMovable.direction = context.ReadValue<Vector2>();
+        
     }
 }
