@@ -7,7 +7,8 @@ using UnityEngine;
 /// </summary>
 public class Jumps : MonoBehaviour
 {
-    public float duration;
+    public Stat radius;
+    private float duration;
     public float cooldown;
     float lastJumpTime = 0;
     Animator selfAnimator;
@@ -25,6 +26,7 @@ public class Jumps : MonoBehaviour
         selfMovable = GetComponent<Movable>();
         selfRenderer = GetComponent<SpriteRenderer>();
         selfOrderer = GetComponent<OrderedOnZ>();
+        duration = radius.GetValue() / selfMovable.GetSpeed();
     }
 
     public bool CanJump() {
@@ -36,7 +38,7 @@ public class Jumps : MonoBehaviour
             return false;
         }
         
-        Vector3 offset = new Vector3(selfMovable.direction.x, selfMovable.direction.y, 0) * selfMovable.speed * duration;
+        Vector3 offset = new Vector3(selfMovable.direction.x, selfMovable.direction.y, 0) * selfMovable.GetSpeed() * duration;
 
         Vector3 newPos = offset + transform.position;
         Vector3Int gridPos = GridMatrix.selfGrid.WorldToCell(newPos);

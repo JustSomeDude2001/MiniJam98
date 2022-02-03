@@ -112,11 +112,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f206d5ed45784404d853eb12da31ba24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifierName: 
+  modifierName: wallDamage
   damageOnContact: 5
   damageBlacklist:
   - Wall
   - Player
+  - Trap
   cooldown: 0.5
   lastAttackTime: -1
   targetAnimator: {fileID: 6826655002410365286}
@@ -247,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c3c84a7a4ef172e8e1d07b7615ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifierName: 
+  modifierName: wallHealth
   dyingTime: 1
   dying: 0
   healthMax: 75
@@ -308,5 +309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce894ccaa7b5447c68f754b7936564a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modifierName: trapSpawnChance
   spawnedObject: {fileID: 2885940410563056911, guid: e8e9e0d0879ffad4bb08b34059eb1778, type: 3}
   baseSpawnChance: 1

@@ -10,11 +10,7 @@ public class SnapsToCursorAroundPlayer : MonoBehaviour
 {
     public string modifierName;
 
-    public float radius = 4;
-
-    private void Start() {
-        radius = radius * Player.GetModifier(modifierName) * Player.GetModifier(Player.ToTemp(modifierName));
-    }
+    public Stat radius;
 
     void Update()
     {
@@ -23,8 +19,8 @@ public class SnapsToCursorAroundPlayer : MonoBehaviour
         }
         
         Vector3 offset = GridMatrix.selfGrid.CellToWorld(CursorTracker.cursorPos) - Player.playerPos;
-        if (offset.magnitude > radius) {
-            offset *= radius / offset.magnitude;
+        if (offset.magnitude > radius.GetValue()) {
+            offset *= radius.GetValue() / offset.magnitude;
         }
 
         Vector3Int cellPos = GridMatrix.selfGrid.WorldToCell(Player.playerPos + offset);

@@ -9,25 +9,14 @@ public class SpawnsOnDeath : MonoBehaviour
 {
     public GameObject spawnedObject;
 
-    public float baseSpawnChance = 1;
-
-    private void Start() {
-        if (tag == "Wall") {
-            //Check required to prevent defaulting to 100% chance of spawn.
-            if (Player.GetLevel("mineSpawnChance") == 0) {
-                baseSpawnChance = 0;
-            } else {
-                baseSpawnChance *= Player.GetModifier("mineSpawnChance");
-            }
-        }
-    }
+    public Stat baseSpawnChance;
 
     private void OnDestroy() {
         // Preventing spawns after game-over.
         if (!Player.isAlive) {
             return;
         }
-        if (baseSpawnChance > Random.Range(0f, 1f)) 
+        if (baseSpawnChance.GetValue() > Random.Range(0f, 1f)) 
             Instantiate(spawnedObject, transform.position, Quaternion.identity);
     }
 }

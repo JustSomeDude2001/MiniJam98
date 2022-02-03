@@ -8,9 +8,7 @@ using UnityEngine;
 /// </summary>
 public class Damages : MonoBehaviour
 {
-    public string modifierName;
-    public int damageOnContact = 1;
-
+    public Stat damage;
     [Tooltip("Add tags that will be ignored on contact")]
     public List<string> damageBlacklist;
 
@@ -29,7 +27,7 @@ public class Damages : MonoBehaviour
     }
 
     public int GetDamage() {
-        return (int)(damageOnContact * Player.GetModifier(Player.ToTemp(modifierName)) * Player.GetModifier(modifierName));
+        return (int)damage.GetValue();
     }
 
     private void OnCollisionStay2D(Collision2D other) {

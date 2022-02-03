@@ -4,61 +4,26 @@ using UnityEngine;
 
 public class TempUpgrade : MonoBehaviour
 {
-    public string modifierName;
-    public List<float> modifier;
-    public List<int> cost;
-
-    /// <summary>
-    /// Note: Requirements only apply for the first tier of upgrade.
-    /// </summary>
-    public List <string> requirementNames;
-
-    /// <summary>
-    /// Note: Requirements only apply for the first tier of upgrade.
-    /// </summary>
-    public List <int> requirementLevels;
-
-
-    private void Start() {
-        if (!Player.IsTempUpgrade(modifierName)) {
-            modifierName = Player.ToTemp(modifierName);
-        }
-    }
-
-    public int GetNextLevel() {
-        return Player.GetLevel(modifierName) + 1;
-    }
+    public TempUpgradeableStat stat;
 
     public int GetCost() {
-        return cost[GetNextLevel()];
+        return stat.GetCost();
     }
 
     public bool IsMaxLevel() {
-        return Player.GetLevel(modifierName) >= modifier.Count - 1;
+        return stat.IsMaxLevel();
     }
 
     public bool IsAvailable() {
-        for (int i = 0; i < requirementLevels.Count; i++) {
-            if (Player.GetLevel(requirementNames[i]) < requirementLevels[i]) {
-                return false;
-            }
-        }
-        return true;
+        return stat.Unlocked();
     }
 
     public bool CanUpgrade() {
-        if (!IsMaxLevel() && IsAvailable() && cost[GetNextLevel()] <= Player.money) {
-            return true;
-        }
-        return false;
+        return stat.CanUpgrade();
     }
 
     private void Upgrade() {
-        int nextLevel = GetNextLevel();
-        Player.SetLevel(modifierName, nextLevel);
-        Player.SetModifier(modifierName, modifier[nextLevel]);
-        Debug.Log(Player.GetModifier(modifierName));
-        Player.money -= cost[nextLevel];
+        stat.Upgrade();
     }
 
     public void TryUpgrade() {

@@ -18,7 +18,7 @@ public class DiesAfterFirstAttack : MonoBehaviour
     void Update()
     {
         if (damager.lastAttackTime > 0) {
-            destructible.TakeDamage(destructible.healthMax);
-        }    
+            destructible.TakeDamage(destructible.GetMaxHealth());
+        }
     }
 }
