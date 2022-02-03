@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 2586236770448232578}
   - component: {fileID: 2586236770448232577}
   - component: {fileID: 5203524446503648777}
+  - component: {fileID: 2385796556482766019}
   - component: {fileID: 2819272374361475180}
   - component: {fileID: 4724318913204238513}
   - component: {fileID: 5274134962059065790}
@@ -151,7 +152,19 @@ MonoBehaviour:
     m_ActionId: a618ff32-7b03-4a87-bb4d-dda942dcb47b
     m_ActionName: PlayerControls/MetaUpgrade[/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2385796556482766019}
+        m_TargetAssemblyTypeName: PausesOnKey, Assembly-CSharp
+        m_MethodName: OnTogglePause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 7dfe9cdf-0121-46ec-83b8-f00a2051676a
     m_ActionName: PlayerControls/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
@@ -336,7 +349,20 @@ MonoBehaviour:
   - {x: -0.036226854, y: -0.053960748, z: 0}
   m_ShapePathHash: -2097354407
   m_Mesh: {fileID: 0}
-  m_InstanceId: -8010
+  m_InstanceId: 23694
+--- !u!114 &2385796556482766019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586236770448232606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e85743258b7071eab77d7dcbfec288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseScene: 
 --- !u!70 &2819272374361475180
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

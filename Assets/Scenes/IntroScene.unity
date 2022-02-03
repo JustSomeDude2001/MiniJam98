@@ -184,8 +184,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5e85f1080f3aa21bbbd71f41c52e0420, type: 2}
-  m_sharedMaterial: {fileID: 6562325309602478872, guid: 5e85f1080f3aa21bbbd71f41c52e0420, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 65a7f7c66d3b106428c975634df50cc3, type: 2}
+  m_sharedMaterial: {fileID: -3375668975257938783, guid: 65a7f7c66d3b106428c975634df50cc3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -392,8 +392,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PIXEL 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5e85f1080f3aa21bbbd71f41c52e0420, type: 2}
-  m_sharedMaterial: {fileID: 6562325309602478872, guid: 5e85f1080f3aa21bbbd71f41c52e0420, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 65a7f7c66d3b106428c975634df50cc3, type: 2}
+  m_sharedMaterial: {fileID: -3375668975257938783, guid: 65a7f7c66d3b106428c975634df50cc3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -651,7 +651,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1635576514}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1635576516}
+        m_TargetAssemblyTypeName: LoadsScene, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1635576514
 MonoBehaviour:
   m_ObjectHideFlags: 0
