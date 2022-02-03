@@ -269,8 +269,8 @@ TextureImporter:
         y: 40
         width: 16
         height: 21
-      alignment: 9
-      pivot: {x: 0.5646386, y: 0.48241132}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -328,12 +328,12 @@ TextureImporter:
       name: Sprite-0001-Death_6
       rect:
         serializedVersion: 2
-        x: 241
+        x: 242
         y: 40
         width: 17
         height: 19
-      alignment: 9
-      pivot: {x: 0.33714026, y: 0.55147094}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -395,8 +395,8 @@ TextureImporter:
         y: 40
         width: 14
         height: 10
-      alignment: 9
-      pivot: {x: 0.27912685, y: 1.4703903}
+      alignment: 6
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
