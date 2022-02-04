@@ -131,6 +131,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 686173299}
     m_Modifications:
     - target: {fileID: 6755921254992204080, guid: 30a0538edaf67ca4384ce9806ca1adc2, type: 3}
+      propertyPath: stat
+      value: 
+      objectReference: {fileID: 11400000, guid: 59046c9163841e22184c90a7a9effef5, type: 2}
+    - target: {fileID: 6755921254992204080, guid: 30a0538edaf67ca4384ce9806ca1adc2, type: 3}
       propertyPath: modifierName
       value: trapDamage
       objectReference: {fileID: 0}
@@ -480,6 +484,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 686173299}
     m_Modifications:
     - target: {fileID: 6755921254992204080, guid: 30a0538edaf67ca4384ce9806ca1adc2, type: 3}
+      propertyPath: stat
+      value: 
+      objectReference: {fileID: 11400000, guid: 8fec276c3b691799e8e487b5ab8a9954, type: 2}
+    - target: {fileID: 6755921254992204080, guid: 30a0538edaf67ca4384ce9806ca1adc2, type: 3}
       propertyPath: modifierName
       value: wallDamage
       objectReference: {fileID: 0}
@@ -651,6 +659,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 686173299}
     m_Modifications:
     - target: {fileID: 6755921254992204080, guid: 30a0538edaf67ca4384ce9806ca1adc2, type: 3}
+      propertyPath: stat
+      value: 
+      objectReference: {fileID: 11400000, guid: 62c369f3c8da19173be59bec942c96e7, type: 2}
+    - target: {fileID: 6755921254992204080, guid: 30a0538edaf67ca4384ce9806ca1adc2, type: 3}
       propertyPath: modifierName
       value: buildRadius
       objectReference: {fileID: 0}
@@ -760,6 +772,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 686173299}
     m_Modifications:
+    - target: {fileID: 6755921254992204080, guid: 30a0538edaf67ca4384ce9806ca1adc2, type: 3}
+      propertyPath: stat
+      value: 
+      objectReference: {fileID: 11400000, guid: 80fdd3c98ebfdc9eaab613c841bd7265, type: 2}
     - target: {fileID: 6755921254992204080, guid: 30a0538edaf67ca4384ce9806ca1adc2, type: 3}
       propertyPath: modifierName
       value: wallHealth
@@ -875,6 +891,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 686173299}
     m_Modifications:
+    - target: {fileID: 6755921254992204080, guid: 30a0538edaf67ca4384ce9806ca1adc2, type: 3}
+      propertyPath: stat
+      value: 
+      objectReference: {fileID: 11400000, guid: f5dbb535405182f60b4c054d7e670366, type: 2}
     - target: {fileID: 6755921254992204092, guid: 30a0538edaf67ca4384ce9806ca1adc2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

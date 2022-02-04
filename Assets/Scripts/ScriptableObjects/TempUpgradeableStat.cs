@@ -2,12 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "TempUpgradeableStat")]
 public class TempUpgradeableStat : UpgradeableStat
 {
-    public int cost;
+    [System.NonSerialized]
+    public static List <TempUpgradeableStat> knownTempUpgrades = new List<TempUpgradeableStat>();
+    public int upgradeCost;
+
+    public override void Initialize()
+    {
+        knownTempUpgrades.Add(this);
+        ResetToInitial();
+    }
+
     public override bool CanUpgrade()
     {
-        if (Player.money < cost) {
+        if (Player.money < upgradeCost) {
             return false;
         }
         if (!Unlocked()) {
@@ -18,12 +28,12 @@ public class TempUpgradeableStat : UpgradeableStat
 
     public override int GetCost()
     {
-        return cost;
+        return upgradeCost;
     }
 
     public override void Upgrade()
     {
-        Player.money -= cost;
+        Player.money -= upgradeCost;
         nextLevel++;
     }
 }

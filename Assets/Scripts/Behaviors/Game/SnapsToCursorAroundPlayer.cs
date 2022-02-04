@@ -8,8 +8,6 @@ using UnityEngine;
 /// </summary>
 public class SnapsToCursorAroundPlayer : MonoBehaviour
 {
-    public string modifierName;
-
     public Stat radius;
 
     void Update()

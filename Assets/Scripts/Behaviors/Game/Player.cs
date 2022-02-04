@@ -26,6 +26,12 @@ public class Player : MonoBehaviour
     public static int moneyAllTime = 0;
 
     private void Start() {
+
+        // Resetting all temporary upgrades.
+        for (int i = 0; i < TempUpgradeableStat.knownTempUpgrades.Count; i++) {
+            TempUpgradeableStat.knownTempUpgrades[i].ResetToInitial();
+        }
+
         money = 0;
         moneyAllTime = 0;
         isAlive = true;

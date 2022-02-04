@@ -12,11 +12,18 @@ public class MetaUpgrade : MonoBehaviour
     public int level;
 
     public bool IsPurchased() {
-        return level < stat.GetCurrentLevel();
+        return level <= stat.GetCurrentLevel();
     }
 
     public bool IsAvailable() {
+        if (level - 1 != stat.GetCurrentLevel()) {
+            return false;
+        }
         return stat.Unlocked();
+    }
+
+    public bool CanUpgrade() {
+        return (!IsPurchased()) && IsAvailable() && (GetCost() <= Player.metaMoney);
     }
 
     public int GetCost() {
@@ -24,6 +31,9 @@ public class MetaUpgrade : MonoBehaviour
     }
 
     public void TryUpgrade() {
+        if (!CanUpgrade()) {
+            return;
+        }
         if (stat.CanUpgrade()) {
             stat.Upgrade();
         }

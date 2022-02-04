@@ -58,9 +58,9 @@ public class Destructible : MonoBehaviour
         }
     }
 
-    private void FixedUpdate() {
+    private void Update() {
         if (dying == true) {
-            dyingTime -= Time.fixedDeltaTime;
+            dyingTime -= Time.deltaTime;
             if (dyingTime <= 0) {
                 Destroy(gameObject);
             }

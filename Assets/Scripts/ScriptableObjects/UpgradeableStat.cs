@@ -4,15 +4,23 @@ using UnityEngine;
 
 public abstract class UpgradeableStat : Stat
 {
-    public List <float> upgradedValues;
     public List <UpgradeableStat> prerequisiteUpgrades;
     public List <int> prerequisiteUpgradeLevels;
+    public List <float> upgradedValues;
     protected int nextLevel;
-    
+
     private void OnEnable() {
+        Initialize();
+    }
+
+    public virtual void Initialize() {
+        ResetToInitial();
+    }
+
+    public virtual void ResetToInitial() {
         nextLevel = 0;
     }
-    
+
     public int GetCurrentLevel() {
         return nextLevel;
     }
@@ -20,7 +28,7 @@ public abstract class UpgradeableStat : Stat
         if (nextLevel == 0) {
             return baseValue;
         }
-        return upgradedValues[nextLevel];
+        return upgradedValues[nextLevel - 1];
     }
     public bool Unlocked() {
         for (int i = 0; i < prerequisiteUpgrades.Count; i++) {
