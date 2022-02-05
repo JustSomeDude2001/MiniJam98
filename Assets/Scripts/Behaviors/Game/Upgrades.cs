@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class Upgrades : MonoBehaviour
 {
+    public MetaUpgradeableStat Upgradeability;
+
     public float cooldown;    
 
     float lastUpgrade = -1;
@@ -18,6 +20,10 @@ public class Upgrades : MonoBehaviour
     }
 
     public bool CanUpgrade() {
+        if (Upgradeability.GetCurrentLevel() == 0) {
+            return false;
+        }
+
         if (Player.isOnPause) {
             return false;
         }

@@ -228,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6407e9338c0b0c6109590dcb0ccf8296, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Upgradeability: {fileID: 11400000, guid: 056d7a5d2cba9aeacb3cfc65c80e530d, type: 2}
   cooldown: 0.5
 --- !u!114 &4775112640111498729
 MonoBehaviour:
