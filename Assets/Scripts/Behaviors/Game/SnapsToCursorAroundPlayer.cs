@@ -10,16 +10,27 @@ public class SnapsToCursorAroundPlayer : MonoBehaviour
 {
     public Stat radius;
 
+    public Builds builder;
+    public Upgrades upgrader;
+
     void Update()
     {
+        if ((transform.position - Player.playerPos).magnitude > radius.GetValue()) {
+            builder.isInRadius = false;
+            upgrader.isInRadius = false;
+        } else {
+            builder.isInRadius = true;
+            builder.isInRadius = true;
+        }
+
         if (Player.isOnPause) {
             return;
         }
         
         Vector3 offset = GridMatrix.selfGrid.CellToWorld(CursorTracker.cursorPos) - Player.playerPos;
-        if (offset.magnitude > radius.GetValue()) {
+        /**if (offset.magnitude > radius.GetValue()) {
             offset *= radius.GetValue() / offset.magnitude;
-        }
+        }**/
 
         Vector3Int cellPos = GridMatrix.selfGrid.WorldToCell(Player.playerPos + offset);
 

@@ -15,11 +15,17 @@ public class Upgrades : MonoBehaviour
 
     Animator selfAnimator;
 
+    [HideInInspector]
+    public bool isInRadius = false;
+
     private void Start() {
         selfAnimator = GetComponent<Animator>();
     }
 
     public bool CanUpgrade() {
+        if (!isInRadius) {
+            return false;
+        }
         if (Upgradeability.GetCurrentLevel() == 0) {
             return false;
         }

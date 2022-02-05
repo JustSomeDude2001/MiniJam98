@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public static bool purchasedMetaUpgrade = false;
     public static bool isAlive;
     public static float lastClick;
+
+    
     public static Vector3 playerPos;
     /// <summary>
     /// Core money. Used for buying constructions.
