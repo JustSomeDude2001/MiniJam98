@@ -15,7 +15,7 @@ MonoBehaviour:
   baseValue: 1
   prerequisiteUpgrades:
   - {fileID: 11400000, guid: 056d7a5d2cba9aeacb3cfc65c80e530d, type: 2}
-  prerequisiteUpgradeLevels: 01000000
+  prerequisiteUpgradeAmounts: 01000000
   upgradedValues:
   - 2
   - 3

@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PauseScene.unity
     guid: 51d71df9054c7b2c684f6d80c51541fc
+  - enabled: 1
+    path: Assets/Scenes/VictoryScene.unity
+    guid: ad9fe8f51fb1bd5bbb2d1884f50933c6
   m_configObjects: {}
