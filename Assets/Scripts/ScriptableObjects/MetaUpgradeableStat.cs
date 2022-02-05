@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "MetaUpgradeableStat")]
 public class MetaUpgradeableStat : UpgradeableStat
 {
+    [Tooltip("Costs of all the upgrades of this stat. Amount must match amount of values.")]
     public List <int> costs;
 
     public override bool CanUpgrade()

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Stat")]
 public class Stat : ScriptableObject
 {
-    [SerializeField]
+    [Tooltip("This is the base value of the stat when unapgraded.")]
     public float baseValue;
 
     public virtual float GetValue() {

@@ -7,6 +7,8 @@ public class TempUpgradeableStat : UpgradeableStat
 {
     [System.NonSerialized]
     public static List <TempUpgradeableStat> knownTempUpgrades = new List<TempUpgradeableStat>();
+
+    [Tooltip("Cost of upgrading this stat.")]
     public int upgradeCost;
 
     public override void Initialize()

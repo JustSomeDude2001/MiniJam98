@@ -4,8 +4,12 @@ using UnityEngine;
 
 public abstract class UpgradeableStat : Stat
 {
+    [Tooltip("If upgrade has prerequisites, add the stats that are prerequisites in here. Add a value for each item here in Prerequisite Upgrade Amounts list.")]
     public List <UpgradeableStat> prerequisiteUpgrades;
-    public List <int> prerequisiteUpgradeLevels;
+    [Tooltip("For every prerequisite stat, add the amount of upgrades that need to be done on that stat, e.g. which level the stat needs to be. At start all stats are level 0.")]
+    public List <int> prerequisiteUpgradeAmounts;
+
+    [Tooltip("All upgraded values, from 1st upgrade to last, that will override the base value. If this is a meta stat, amount needs to match amount of costs list objects")]
     public List <float> upgradedValues;
     protected int nextLevel;
 
@@ -32,7 +36,7 @@ public abstract class UpgradeableStat : Stat
     }
     public bool Unlocked() {
         for (int i = 0; i < prerequisiteUpgrades.Count; i++) {
-            if (prerequisiteUpgrades[i].GetCurrentLevel() < prerequisiteUpgradeLevels[i]) {
+            if (prerequisiteUpgrades[i].GetCurrentLevel() < prerequisiteUpgradeAmounts[i]) {
                 return false;
             }
         }
