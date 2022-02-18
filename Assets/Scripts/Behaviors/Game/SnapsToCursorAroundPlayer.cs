@@ -55,7 +55,6 @@ public class SnapsToCursorAroundPlayer : MonoBehaviour
             cellPos.x = GridMatrix.width - 1;
         }
         
-        Debug.Log(newState);
         Toggle(newState);
 
         Vector3 newPos = GridMatrix.selfGrid.CellToWorld(cellPos) + 
