@@ -6,7 +6,8 @@ using TMPro;
 
 public class TempUpgrade : MonoBehaviour
 {
-    bool isUnlocked = false;
+    [HideInInspector]
+    public bool isUnlocked = false;
 
     public TempUpgradeableStat stat;
 
@@ -14,10 +15,12 @@ public class TempUpgrade : MonoBehaviour
 
     Button selfButton;
     Image selfImage;
+    private List<Image> childImages;
 
     private void Start() {
         selfButton = GetComponent<Button>();
         selfImage = GetComponent<Image>();
+        childImages = new List<Image>(GetComponentsInChildren<Image>());
     }
 
     private void Update() {
@@ -28,6 +31,10 @@ public class TempUpgrade : MonoBehaviour
                 selfButton.enabled = true;
                 for (int i = 0; i < textToEnable.Count; i++) {
                     textToEnable[i].enabled = true;
+                }
+                for (int i = 0; i < childImages.Count; i++)
+                {
+                    childImages[i].enabled = true;
                 }
             }
         }

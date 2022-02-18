@@ -22,6 +22,10 @@ public class TempUpgradeableStat : UpgradeableStat
         if (Player.money < upgradeCost) {
             return false;
         }
+        if (GetCurrentLevel() >= upgradedValues.Count)
+        {
+            return false;
+        }
         if (!Unlocked()) {
             return false;
         }

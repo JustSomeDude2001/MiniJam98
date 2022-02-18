@@ -20,7 +20,7 @@ public class SnapsToCursorAroundPlayer : MonoBehaviour
             upgrader.isInRadius = false;
         } else {
             builder.isInRadius = true;
-            builder.isInRadius = true;
+            upgrader.isInRadius = true;
         }
 
         if (Player.isOnPause) {
