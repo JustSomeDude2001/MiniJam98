@@ -60,7 +60,7 @@ MonoBehaviour:
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 3
-    m_Scale: 1
+    m_Scale: 0.5
     m_Name: UI_Elements_4
     m_HashCode: 396203173
   - m_ElementType: 2
@@ -225,11 +225,11 @@ MonoBehaviour:
     sprite: {fileID: -1099639297399914058, guid: 5c899da3c5fa7e81d9e66f3618c775b4, type: 3}
   - m_Index: 3
     m_Metrics:
-      m_Width: 6
-      m_Height: 6
-      m_HorizontalBearingX: -3
-      m_HorizontalBearingY: 6
-      m_HorizontalAdvance: 6
+      m_Width: 1
+      m_Height: 1
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 1
+      m_HorizontalAdvance: 1
     m_GlyphRect:
       m_X: 146
       m_Y: 370

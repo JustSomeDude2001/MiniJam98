@@ -12,6 +12,6 @@ public class DisplaysMetaMoney : MonoBehaviour
     }
 
     private void Update() {
-        selfText.text = Player.metaMoney.ToString();
+        selfText.text = Player.metaMoney.ToString() + "<sprite index=3>";
     }
 }
