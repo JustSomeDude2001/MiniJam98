@@ -13,19 +13,19 @@ public class SnapsToCursorAroundPlayer : MonoBehaviour
     public Builds builder;
     public Upgrades upgrader;
 
+    public void Toggle(bool value)
+    {
+        builder.isInRadius = value;
+        upgrader.isInRadius = value;
+    }
+
     void Update()
     {
-        if ((transform.position - Player.playerPos).magnitude > radius.GetValue()) {
-            builder.isInRadius = false;
-            upgrader.isInRadius = false;
-        } else {
-            builder.isInRadius = true;
-            builder.isInRadius = true;
-        }
+        bool newState = !((transform.position - Player.playerPos).magnitude > radius.GetValue());
 
-        if (Player.isOnPause) {
+        /**if (Player.isOnPause) {
             return;
-        }
+        }**/
         
         Vector3 offset = GridMatrix.selfGrid.CellToWorld(CursorTracker.cursorPos) - Player.playerPos;
         /**if (offset.magnitude > radius.GetValue()) {
@@ -34,21 +34,28 @@ public class SnapsToCursorAroundPlayer : MonoBehaviour
 
         Vector3Int cellPos = GridMatrix.selfGrid.WorldToCell(Player.playerPos + offset);
 
-        if (cellPos.y < 0) {
+        if (cellPos.y < 0)
+        {
+            newState = false;
             cellPos.y = 0;
         }
 
         if (cellPos.x < 0) {
+            newState = false;
             cellPos.x = 0;
         }
 
         if (cellPos.y >= GridMatrix.height) {
+            newState = false;
             cellPos.y = GridMatrix.height - 1;
         }
 
         if (cellPos.x >= GridMatrix.width) {
+            newState = false;
             cellPos.x = GridMatrix.width - 1;
         }
+        
+        Toggle(newState);
 
         Vector3 newPos = GridMatrix.selfGrid.CellToWorld(cellPos) + 
                          GridMatrix.selfGrid.cellSize / 2f;

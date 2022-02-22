@@ -12,6 +12,6 @@ public class DisplaysMoney : MonoBehaviour
     }
 
     private void Update() {
-        selfText.text = Player.money.ToString();
+        selfText.text = Player.money.ToString() + "<sprite index=4>";
     }
 }

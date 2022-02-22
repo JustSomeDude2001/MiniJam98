@@ -13,7 +13,7 @@ public class TempCostDisplay : MonoBehaviour
         if (tempUpgrade.IsMaxLevel()) {
             text.text = maxedOutText;
         } else {
-            text.text = tempUpgrade.GetCost().ToString();
+            text.text = tempUpgrade.GetCost().ToString() + "<sprite index=4>";
         }
     }
 }

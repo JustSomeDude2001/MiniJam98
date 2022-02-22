@@ -5,13 +5,13 @@ using TMPro;
 
 public class DisplaysMetaMoney : MonoBehaviour
 {
-    TextMeshPro selfText;
+    TextMeshProUGUI selfText;
     
     private void Start() {
-        selfText = GetComponent<TextMeshPro>();
+        selfText = GetComponent<TextMeshProUGUI>();
     }
 
     private void Update() {
-        selfText.text = Player.metaMoney.ToString();
+        selfText.text = Player.metaMoney.ToString() + "<sprite index=3>";
     }
 }
