@@ -7,10 +7,9 @@ using UnityEngine;
 /// </summary>
 public class Movable : MonoBehaviour
 {
-    public string modifierName;
     public Vector2 direction = Vector2.zero;
 
-    public float speed = 1;
+    public Stat speed;
 
     Rigidbody2D selfRigidBody;
     Animator selfAnimator;
@@ -24,7 +23,7 @@ public class Movable : MonoBehaviour
 
     public float GetSpeed()
     {
-        return speed * Player.GetModifier(modifierName) * Player.GetModifier(Player.ToTemp(modifierName));
+        return speed.GetValue();
     }
 
     private void Update()

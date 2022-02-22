@@ -12,15 +12,10 @@ public class Mines : MonoBehaviour
     /// <summary>
     /// Cooldown between automatic mining actions.
     /// </summary>
-    public float miningCooldown;
+    public Stat miningCooldown;
 
     [Tooltip("Set to visual-flair object (pickaxe) that indicates mined object")]
     public GameObject visualPickaxe;
-
-    private void Start() {
-        miningCooldown *= Player.GetModifier("miningCooldown");
-        radius *= Player.GetModifier("miningRadius");
-    }
 
     public Mineable GetMineableInRadius() {
         for (int k = 0; k < radius; k++) {
@@ -62,7 +57,7 @@ public class Mines : MonoBehaviour
     /// </summary>
     private void Update() {
         float elapsedTime = Time.time - lastMineOperation;
-        if (elapsedTime >= miningCooldown) {
+        if (elapsedTime >= miningCooldown.GetValue()) {
             Mineable target = GetMineableInRadius();
             if (target != null) {
                 target.Mine();

@@ -7,26 +7,23 @@ using UnityEngine;
 /// </summary>
 public class Destructible : MonoBehaviour
 {
-    public string modifierName;
+    public Stat maxHealth;
     private int healthCurrent = 1;
 
     public float dyingTime = 1;
     public bool dying = false;
 
-    /// <summary>
-    /// Maximum health can be safely modified as needed - clamping to
-    /// prevent immortality or the like is done in methods concerning
-    /// current health.
-    /// </summary>
-    public int healthMax = 1;
     [HideInInspector]
     public float lastAuraDamageTime;
     Animator myAnimator;
 
+    public int GetMaxHealth() {
+        return (int)maxHealth.GetValue();
+    }
+
     private void Start() {
         myAnimator = GetComponent<Animator>();
-        healthMax = (int)(healthMax * Player.GetModifier(modifierName) * Player.GetModifier(Player.ToTemp(modifierName)));
-        healthCurrent = healthMax;
+        healthCurrent = (int)maxHealth.GetValue();
     }
 
     public int GetHealth() {
@@ -40,8 +37,8 @@ public class Destructible : MonoBehaviour
         if (dying) {
             return;
         }
-        if (healthCurrent > healthMax) {
-            healthCurrent = healthMax;
+        if (healthCurrent > GetMaxHealth()) {
+            healthCurrent = GetMaxHealth();
         }
         if (healthCurrent <= 0) {
             if (myAnimator != null)
@@ -61,9 +58,9 @@ public class Destructible : MonoBehaviour
         }
     }
 
-    private void FixedUpdate() {
+    private void Update() {
         if (dying == true) {
-            dyingTime -= Time.fixedDeltaTime;
+            dyingTime -= Time.deltaTime;
             if (dyingTime <= 0) {
                 Destroy(gameObject);
             }

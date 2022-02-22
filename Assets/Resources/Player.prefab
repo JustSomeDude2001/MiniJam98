@@ -151,7 +151,19 @@ MonoBehaviour:
     m_ActionId: a618ff32-7b03-4a87-bb4d-dda942dcb47b
     m_ActionName: PlayerControls/MetaUpgrade[/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PausesOnKey, Assembly-CSharp
+        m_MethodName: OnTogglePause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 7dfe9cdf-0121-46ec-83b8-f00a2051676a
     m_ActionName: PlayerControls/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
@@ -204,9 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c021380bcef33afb69e8fe29c2d2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifierName: 
   direction: {x: 0, y: 0}
-  speed: 0.5
+  speed: {fileID: 11400000, guid: f5dbb535405182f60b4c054d7e670366, type: 2}
   Dust: {fileID: 4724318913204238513}
 --- !u!114 &2586236770448232601
 MonoBehaviour:
@@ -220,10 +231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c3c84a7a4ef172e8e1d07b7615ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifierName: 
+  maxHealth: {fileID: 11400000, guid: e96d57d13f6eaf963a1416ac3bec4ed9, type: 2}
   dyingTime: 1
   dying: 0
-  healthMax: 100
   lastAuraDamageTime: 0
 --- !u!114 &2586236770448232581
 MonoBehaviour:
@@ -250,7 +260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 5
-  miningCooldown: 1
+  miningCooldown: {fileID: 11400000, guid: 4f2149d0a41d31cc0910fada69af594e, type: 2}
   visualPickaxe: {fileID: 0}
 --- !u!114 &2586236770448232579
 MonoBehaviour:
@@ -336,7 +346,7 @@ MonoBehaviour:
   - {x: -0.036226854, y: -0.053960748, z: 0}
   m_ShapePathHash: -2097354407
   m_Mesh: {fileID: 0}
-  m_InstanceId: -8010
+  m_InstanceId: 28494
 --- !u!70 &2819272374361475180
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

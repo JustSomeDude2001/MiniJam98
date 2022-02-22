@@ -112,8 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f206d5ed45784404d853eb12da31ba24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifierName: 
-  damageOnContact: 7
+  damage: {fileID: 11400000, guid: 21dda1b4a2303d85db14fb70e00d7ccb, type: 2}
   damageBlacklist:
   - Enemy
   cooldown: 1
@@ -190,10 +189,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c3c84a7a4ef172e8e1d07b7615ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifierName: 
+  maxHealth: {fileID: 11400000, guid: 91631000a725c6537bd2f305cff8bcd6, type: 2}
   dyingTime: 1
   dying: 0
-  healthMax: 200
   lastAuraDamageTime: 0
 --- !u!114 &1701908070692177774
 MonoBehaviour:
@@ -207,9 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c021380bcef33afb69e8fe29c2d2d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifierName: 
   direction: {x: 0, y: 0}
-  speed: 0.5
+  speed: {fileID: 11400000, guid: a2c02296d2a17d1be8b5c44eeede019e, type: 2}
   Dust: {fileID: 0}
 --- !u!114 &3355851514571750616
 MonoBehaviour:

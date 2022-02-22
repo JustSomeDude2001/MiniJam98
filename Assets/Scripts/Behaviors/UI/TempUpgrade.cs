@@ -1,64 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class TempUpgrade : MonoBehaviour
 {
-    public string modifierName;
-    public List<float> modifier;
-    public List<int> cost;
+    bool isUnlocked = false;
 
-    /// <summary>
-    /// Note: Requirements only apply for the first tier of upgrade.
-    /// </summary>
-    public List <string> requirementNames;
+    public TempUpgradeableStat stat;
 
-    /// <summary>
-    /// Note: Requirements only apply for the first tier of upgrade.
-    /// </summary>
-    public List <int> requirementLevels;
+    public List<TextMeshProUGUI> textToEnable;
 
+    Button selfButton;
+    Image selfImage;
 
     private void Start() {
-        if (!Player.IsTempUpgrade(modifierName)) {
-            modifierName = Player.ToTemp(modifierName);
+        selfButton = GetComponent<Button>();
+        selfImage = GetComponent<Image>();
+    }
+
+    private void Update() {
+        if (!isUnlocked) {
+            if (IsAvailable()) {
+                isUnlocked = true;
+                selfImage.enabled = true;
+                selfButton.enabled = true;
+                for (int i = 0; i < textToEnable.Count; i++) {
+                    textToEnable[i].enabled = true;
+                }
+            }
         }
     }
 
-    public int GetNextLevel() {
-        return Player.GetLevel(modifierName) + 1;
+    public int GetLevel() {
+        return stat.GetCurrentLevel() + 1;
     }
 
     public int GetCost() {
-        return cost[GetNextLevel()];
+        return stat.GetCost();
     }
 
     public bool IsMaxLevel() {
-        return Player.GetLevel(modifierName) >= modifier.Count - 1;
+        return stat.IsMaxLevel();
     }
 
     public bool IsAvailable() {
-        for (int i = 0; i < requirementLevels.Count; i++) {
-            if (Player.GetLevel(requirementNames[i]) < requirementLevels[i]) {
-                return false;
-            }
-        }
-        return true;
+        return stat.Unlocked();
     }
 
     public bool CanUpgrade() {
-        if (!IsMaxLevel() && IsAvailable() && cost[GetNextLevel()] <= Player.money) {
-            return true;
-        }
-        return false;
+        return stat.CanUpgrade();
     }
 
     private void Upgrade() {
-        int nextLevel = GetNextLevel();
-        Player.SetLevel(modifierName, nextLevel);
-        Player.SetModifier(modifierName, modifier[nextLevel]);
-        Debug.Log(Player.GetModifier(modifierName));
-        Player.money -= cost[nextLevel];
+        stat.Upgrade();
     }
 
     public void TryUpgrade() {

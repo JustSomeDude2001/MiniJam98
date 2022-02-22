@@ -202,9 +202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c3c84a7a4ef172e8e1d07b7615ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: {fileID: 11400000, guid: ea0afd0ad3510ecaa9e82d6e2da02b52, type: 2}
   dyingTime: 1
   dying: 0
-  healthMax: 120
   lastAuraDamageTime: 0
 --- !u!95 &9095013578199295879
 Animator:

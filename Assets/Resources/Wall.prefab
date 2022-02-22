@@ -127,10 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c3c84a7a4ef172e8e1d07b7615ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifierName: 
+  maxHealth: {fileID: 11400000, guid: 80fdd3c98ebfdc9eaab613c841bd7265, type: 2}
   dyingTime: 1
   dying: 0
-  healthMax: 50
   lastAuraDamageTime: 0
 --- !u!114 &9166459344077202249
 MonoBehaviour:
@@ -204,4 +203,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnedObject: {fileID: 2885940410563056911, guid: e8e9e0d0879ffad4bb08b34059eb1778, type: 3}
-  baseSpawnChance: 1
+  baseSpawnChance: {fileID: 11400000, guid: 868985a779d23fb43852b6d07a824f0f, type: 2}

@@ -9,10 +9,16 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class Player : MonoBehaviour
 {
+    /// <summary>
+    /// Allows for temporary upgrades to remember which game they were initiated on.
+    /// </summary>
+    public static int currentGame = 0;
     public static bool isOnPause = false;
     public static bool purchasedMetaUpgrade = false;
     public static bool isAlive;
     public static float lastClick;
+
+    
     public static Vector3 playerPos;
     /// <summary>
     /// Core money. Used for buying constructions.
@@ -21,64 +27,11 @@ public class Player : MonoBehaviour
     public static int metaMoney = 1000;
     public static int moneyAllTime = 0;
 
-    public static SortedDictionary<string, float> modifiers = new SortedDictionary<string, float>();
-    public static SortedDictionary<string, int> upgradeLevels = new SortedDictionary<string, int>();
-
-    /// <summary>
-    /// Converts normal modifierName to temporary modifier name.
-    /// </summary>
-    /// <param name="name"></param>
-    /// <returns></returns>
-    public static string ToTemp(string name) {
-        return name + "Temp";
-    }
-
-    public static bool IsTempUpgrade(string name) {
-        if (name.EndsWith("Temp")) {
-            return true;
-        }
-        return false;
-    }
-
-    public static float GetModifier(string name) {
-        if (!modifiers.ContainsKey(name)) {
-            modifiers.Add(name, 1f);
-        }
-        return modifiers[name];
-    }
-
-    public static void SetModifier(string name, float value) {
-        if (!modifiers.ContainsKey(name)) {
-            modifiers.Add(name, 1f);
-        }
-        modifiers[name] = value;
-    }
-
-    public static int GetLevel(string name) {
-        if (!upgradeLevels.ContainsKey(name)) {
-            upgradeLevels.Add(name, 0);
-        }
-        return upgradeLevels[name];
-    }
-
-    public static void SetLevel(string name, int value) {
-        if (!upgradeLevels.ContainsKey(name)) {
-            upgradeLevels.Add(name, 0);
-        }
-        upgradeLevels[name] = value;
-    }
-
     private void Start() {
-        List <string> temps = new List<string>();
-        foreach (string key in modifiers.Keys) {
-            if (IsTempUpgrade(key)) {
-                temps.Add(key);
-            }
-        }
 
-        for (int i = 0; i < temps.Count; i++) {
-            modifiers[temps[i]] = 1;
-            upgradeLevels[temps[i]] = 0;
+        // Resetting all temporary upgrades.
+        for (int i = 0; i < TempUpgradeableStat.knownTempUpgrades.Count; i++) {
+            TempUpgradeableStat.knownTempUpgrades[i].ResetToInitial();
         }
 
         money = 0;
@@ -93,6 +46,7 @@ public class Player : MonoBehaviour
     }
 
     private void OnDestroy() {
+        currentGame++;
         isAlive = false;
         LoadsScene loader = GetComponent<LoadsScene>();
         SceneManager.LoadScene(loader.sceneName, LoadSceneMode.Single);

@@ -7,17 +7,29 @@ using UnityEngine;
 /// </summary>
 public class Upgrades : MonoBehaviour
 {
+    public MetaUpgradeableStat Upgradeability;
+
     public float cooldown;    
 
     float lastUpgrade = -1;
 
     Animator selfAnimator;
 
+    [HideInInspector]
+    public bool isInRadius = false;
+
     private void Start() {
         selfAnimator = GetComponent<Animator>();
     }
 
     public bool CanUpgrade() {
+        if (!isInRadius) {
+            return false;
+        }
+        if (Upgradeability.GetCurrentLevel() == 0) {
+            return false;
+        }
+
         if (Player.isOnPause) {
             return false;
         }

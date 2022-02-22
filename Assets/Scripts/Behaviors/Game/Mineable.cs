@@ -34,7 +34,7 @@ public class Mineable : MonoBehaviour
             Player.moneyAllTime += rewardOnDestroy;
             Destructible destructible = GetComponent<Destructible>();
             if (destructible != null) {
-                destructible.Heal(-destructible.healthMax);
+                destructible.Heal(-destructible.GetMaxHealth());
             } else {
                 Destroy(gameObject);
             }

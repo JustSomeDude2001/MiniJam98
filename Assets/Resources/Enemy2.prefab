@@ -127,7 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0}
-  speed: 0.65
+  speed: {fileID: 11400000, guid: 66bcb28d621aadbfd827ec895995a59f, type: 2}
+  Dust: {fileID: 0}
 --- !u!114 &7338914469080028714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f206d5ed45784404d853eb12da31ba24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageOnContact: 5
+  damage: {fileID: 11400000, guid: 9c171d08e2ee0ccee8442ea44f0cb5ce, type: 2}
   damageBlacklist:
   - Enemy
   cooldown: 1
@@ -182,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb891caa31cf21cfa9b58234b229f3a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.4
+  radius: {fileID: 11400000, guid: 57422c56cfa132f98986ade685e4b489, type: 2}
   cooldown: 2
 --- !u!114 &5690619303905935625
 MonoBehaviour:
@@ -222,9 +223,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c3c84a7a4ef172e8e1d07b7615ebf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: {fileID: 11400000, guid: e55faee530f4961178cd82cd0c304183, type: 2}
   dyingTime: 1
   dying: 0
-  healthMax: 100
   lastAuraDamageTime: 0
 --- !u!95 &6433900858233786413
 Animator:

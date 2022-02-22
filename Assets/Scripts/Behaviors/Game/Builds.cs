@@ -10,6 +10,9 @@ public class Builds : MonoBehaviour
 
     Animator selfAnimator;
 
+    [HideInInspector]
+    public bool isInRadius = false;
+
     private void Start() {
         selfAnimator = GetComponent<Animator>();
     }
@@ -19,6 +22,9 @@ public class Builds : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     public bool CanBuild() {
+        if (!isInRadius) {
+            return false;
+        }
         if (Player.isOnPause) {
             return false;
         }

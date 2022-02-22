@@ -27,7 +27,7 @@ public class TriesToJump : MonoBehaviour
         Vector3 direction = target.transform.position - transform.position;
         direction.Normalize();
 
-        if ((transform.position - lastPosition).magnitude < selfMovable.speed * Time.deltaTime) {
+        if ((transform.position - lastPosition).magnitude < selfMovable.GetSpeed() * Time.deltaTime) {
             selfJumper.Jump();
         }
         lastPosition = transform.position;

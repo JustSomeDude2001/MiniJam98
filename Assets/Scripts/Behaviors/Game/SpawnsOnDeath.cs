@@ -9,17 +9,12 @@ public class SpawnsOnDeath : MonoBehaviour
 {
     public GameObject spawnedObject;
 
-    public float baseSpawnChance = 1;
+    public Stat baseSpawnChance;
+
+    Destructible selfDestructible;
 
     private void Start() {
-        if (tag == "Wall") {
-            //Check required to prevent defaulting to 100% chance of spawn.
-            if (Player.GetLevel("mineSpawnChance") == 0) {
-                baseSpawnChance = 0;
-            } else {
-                baseSpawnChance *= Player.GetModifier("mineSpawnChance");
-            }
-        }
+        selfDestructible = GetComponent<Destructible>();
     }
 
     private void OnDestroy() {
@@ -27,7 +22,10 @@ public class SpawnsOnDeath : MonoBehaviour
         if (!Player.isAlive) {
             return;
         }
-        if (baseSpawnChance > Random.Range(0f, 1f)) 
+        if (!selfDestructible.dying) {
+            return;
+        }
+        if (baseSpawnChance.GetValue() > Random.Range(0f, 1f)) 
             Instantiate(spawnedObject, transform.position, Quaternion.identity);
     }
 }

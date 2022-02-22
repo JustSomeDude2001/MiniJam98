@@ -12,7 +12,7 @@ public class GridMatrix : MonoBehaviour
     
     public static Grid selfGrid;
     public static int height = 19;
-    public static int width = 20;
+    public static int width = 16;
 
     private void Start() {
         selfGrid = GetComponent<Grid>();
