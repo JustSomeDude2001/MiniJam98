@@ -17,10 +17,17 @@ public class TempUpgrade : MonoBehaviour
     Image selfImage;
     private List<Image> childImages;
 
+    public AudioClip onSuccessSound;
+    public AudioSource audioSource;
+    
     private void Start() {
         selfButton = GetComponent<Button>();
         selfImage = GetComponent<Image>();
         childImages = new List<Image>(GetComponentsInChildren<Image>());
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
 
     private void Update() {
@@ -66,6 +73,11 @@ public class TempUpgrade : MonoBehaviour
 
     public void TryUpgrade() {
         if (CanUpgrade()) {
+            if (audioSource != null)
+            {
+                audioSource.clip = onSuccessSound;
+                audioSource.Play();
+            }
             Upgrade();
         }
     }

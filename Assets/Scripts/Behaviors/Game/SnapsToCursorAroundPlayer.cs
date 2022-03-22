@@ -12,11 +12,18 @@ public class SnapsToCursorAroundPlayer : MonoBehaviour
 
     public Builds builder;
     public Upgrades upgrader;
-
+    public Renderer renderer;
+    public CursorTracker tracker;
+    
     public void Toggle(bool value)
     {
         builder.isInRadius = value;
         upgrader.isInRadius = value;
+    }
+
+    public void ToggleVisible(bool value)
+    {
+        renderer.enabled = value;
     }
 
     void Update()
@@ -36,27 +43,24 @@ public class SnapsToCursorAroundPlayer : MonoBehaviour
 
         if (cellPos.y < 0)
         {
-            newState = false;
             cellPos.y = 0;
         }
 
         if (cellPos.x < 0) {
-            newState = false;
             cellPos.x = 0;
         }
 
         if (cellPos.y >= GridMatrix.height) {
-            newState = false;
             cellPos.y = GridMatrix.height - 1;
         }
 
         if (cellPos.x >= GridMatrix.width) {
-            newState = false;
             cellPos.x = GridMatrix.width - 1;
         }
         
-        Toggle(newState);
-
+        Toggle(newState && (!tracker.isOutOfBounds));
+        ToggleVisible(!tracker.isOutOfBounds);
+        
         Vector3 newPos = GridMatrix.selfGrid.CellToWorld(cellPos) + 
                          GridMatrix.selfGrid.cellSize / 2f;
         

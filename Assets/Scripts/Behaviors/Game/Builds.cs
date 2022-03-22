@@ -10,11 +10,20 @@ public class Builds : MonoBehaviour
 
     Animator selfAnimator;
 
+    public AudioSource audioSource;
+    public AudioClip onFailSound;
+    public CursorTracker cursorTracker;
+    
     [HideInInspector]
     public bool isInRadius = false;
 
     private void Start() {
-        selfAnimator = GetComponent<Animator>();
+        if (selfAnimator == null)
+            selfAnimator = GetComponent<Animator>();
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
+        if (cursorTracker == null)
+            cursorTracker = GetComponent<CursorTracker>();
     }
 
     /// <summary>
@@ -51,6 +60,15 @@ public class Builds : MonoBehaviour
             Instantiate(building, transform.position, Quaternion.identity);
             Player.money -= cost;
             lastBuild = Time.time;
+        }
+        else if (!cursorTracker.isOutOfBounds)
+        {
+            // Preventing obnoxious beeping non-stop.                       
+            if (Time.time - lastBuild <= buildingCooldown) {
+                return;
+            }
+            audioSource.clip = onFailSound; 
+            audioSource.Play();
         }
     }
 

@@ -21,11 +21,19 @@ public class Damages : MonoBehaviour
     [Tooltip("Leave empty if you want gameObject's animator to be chosen by default.")]
     public Animator targetAnimator;
 
+    public bool isAuraDamage = false;
+    
     bool CanDamage(GameObject target) {
         if (target == null) {
             return false;
         }
-        if (Time.time - lastAttackTime < cooldown) {
+        if (Time.time - lastAttackTime < cooldown && !isAuraDamage) {
+            return false;
+        }
+
+        Destructible targetDest = target.GetComponent<Destructible>();
+        if (isAuraDamage && Time.time - targetDest.lastAuraDamageTime < cooldown)
+        {
             return false;
         }
         return !(damageBlacklist.Contains(target.tag));

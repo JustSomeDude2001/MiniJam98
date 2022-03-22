@@ -109,6 +109,8 @@ MonoBehaviour:
   cooldown: 1
   lastAttackTime: -1
   targetAnimator: {fileID: 0}
+  onDamageSound: {fileID: 8300000, guid: 1aebcdbde4afc165c9fb3ced1bf45ef5, type: 3}
+  audioSource: {fileID: 0}
 --- !u!114 &7011518255842080426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +127,9 @@ MonoBehaviour:
   dyingTime: 1
   dying: 0
   lastAuraDamageTime: 0
+  onCreateSound: {fileID: 0}
+  onDestroySound: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!114 &7011518255842080429
 MonoBehaviour:
   m_ObjectHideFlags: 0

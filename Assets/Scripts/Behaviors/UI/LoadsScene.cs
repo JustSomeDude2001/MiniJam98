@@ -9,8 +9,13 @@ public class LoadsScene : MonoBehaviour
     public bool started = false;
     public float waitTime = 0;
     public bool isPortal = false;
-
-    public void Load() {
+    public AudioSource audioSource;
+    public AudioClip onLoadSound;
+    
+    public void Load()
+    {
+        audioSource.clip = onLoadSound;
+        audioSource.Play();
         started = true;
     }
 

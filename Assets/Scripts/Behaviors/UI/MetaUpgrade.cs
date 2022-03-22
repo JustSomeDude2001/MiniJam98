@@ -11,6 +11,9 @@ public class MetaUpgrade : MonoBehaviour
 
     public int level;
 
+    public AudioSource audioSource;
+    public AudioClip onSuccessSound;
+    
     public bool IsPurchased() {
         return level <= stat.GetCurrentLevel();
     }
@@ -31,10 +34,12 @@ public class MetaUpgrade : MonoBehaviour
     }
 
     public void TryUpgrade() {
-        if (!CanUpgrade()) {
-            return;
-        }
-        if (stat.CanUpgrade()) {
+        if (CanUpgrade()) {
+            if (audioSource != null)
+            {
+                audioSource.clip = onSuccessSound;
+                audioSource.Play();
+            }
             stat.Upgrade();
         }
     }

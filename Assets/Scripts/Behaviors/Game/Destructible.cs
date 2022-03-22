@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Behavior for items that can take damage from attacks.
@@ -16,14 +19,36 @@ public class Destructible : MonoBehaviour
     [HideInInspector]
     public float lastAuraDamageTime;
     Animator myAnimator;
+    
+    public AudioClip onCreateSound;
+    public AudioClip onDestroySound;
+    public AudioClip onDamagedSound;
 
+    public AudioSource audioSource;
+    
     public int GetMaxHealth() {
         return (int)maxHealth.GetValue();
     }
 
-    private void Start() {
+    private void Start()
+    {
         myAnimator = GetComponent<Animator>();
         healthCurrent = (int)maxHealth.GetValue();
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (audioSource == null)
+        {
+            return;
+        }
+        audioSource.clip = onCreateSound;
+        audioSource.Play();
     }
 
     public int GetHealth() {
@@ -40,7 +65,12 @@ public class Destructible : MonoBehaviour
         if (healthCurrent > GetMaxHealth()) {
             healthCurrent = GetMaxHealth();
         }
-        if (healthCurrent <= 0) {
+        if (healthCurrent <= 0)
+        {
+            if (audioSource != null) {
+                audioSource.clip = onDestroySound;
+                audioSource.Play();
+            }
             if (myAnimator != null)
                 myAnimator.SetBool("isDead", true);
             Movable mover = GetComponent<Movable>();
@@ -51,7 +81,7 @@ public class Destructible : MonoBehaviour
             if (damager != null) {
                 damager.enabled = false;
             }
-            if (tag == "Player") {
+            if (CompareTag("Player")) {
                 Player.isAlive = false;
             }
             dying = true;
@@ -69,6 +99,12 @@ public class Destructible : MonoBehaviour
 
     public void TakeDamage(int damage) {
         ClampHealth();
+        if (audioSource != null)
+        {
+            Debug.Log("Inflicted Damage On" + this.name);
+            audioSource.clip = onDamagedSound;
+            audioSource.Play();
+        }
         healthCurrent -= damage;
         ClampHealth();
     }
