@@ -59,7 +59,7 @@ public class SnapsToCursorAroundPlayer : MonoBehaviour
         }
         
         Toggle(newState && (!tracker.isOutOfBounds));
-        ToggleVisible(!tracker.isOutOfBounds);
+        //ToggleVisible(!tracker.isOutOfBounds);
         
         Vector3 newPos = GridMatrix.selfGrid.CellToWorld(cellPos) + 
                          GridMatrix.selfGrid.cellSize / 2f;

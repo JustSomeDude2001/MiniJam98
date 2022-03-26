@@ -8,7 +8,7 @@ public class Builds : MonoBehaviour
     public GameObject building;
     public int cost;
 
-    Animator selfAnimator;
+    public Animator selfAnimator;
 
     public AudioSource audioSource;
     public AudioClip onFailSound;
@@ -69,12 +69,6 @@ public class Builds : MonoBehaviour
             }
             audioSource.clip = onFailSound; 
             audioSource.Play();
-        }
-    }
-
-    private void Update() {
-        if (selfAnimator != null) {
-            selfAnimator.SetBool("canBuild", CanBuild());
         }
     }
 }

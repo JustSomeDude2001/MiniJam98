@@ -13,13 +13,14 @@ public class Upgrades : MonoBehaviour
 
     float lastUpgrade = -1;
 
-    Animator selfAnimator;
+    public Animator selfAnimator;
 
     [HideInInspector]
     public bool isInRadius = false;
 
     private void Start() {
-        selfAnimator = GetComponent<Animator>();
+        if (selfAnimator == null)
+            selfAnimator = GetComponent<Animator>();
     }
 
     public bool CanUpgrade() {
@@ -80,11 +81,5 @@ public class Upgrades : MonoBehaviour
         Instantiate(result, transform.position, Quaternion.identity);
         Destroy(upgrade.gameObject);
         lastUpgrade = Time.time;
-    }
-    
-    private void Update() {
-        if (selfAnimator != null) {
-            selfAnimator.SetBool("canUpgrade", CanUpgrade());
-        }
     }
 }

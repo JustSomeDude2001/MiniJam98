@@ -150,7 +150,7 @@ TextureImporter:
         width: 17
         height: 22
       alignment: 9
-      pivot: {x: 0.45817006, y: 0.31991348}
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -213,7 +213,7 @@ TextureImporter:
         width: 20
         height: 23
       alignment: 9
-      pivot: {x: 0.39333344, y: 0.34541067}
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -229,12 +229,12 @@ TextureImporter:
       name: props_4
       rect:
         serializedVersion: 2
-        x: 103
-        y: 40
+        x: 105
+        y: 35
         width: 17
         height: 21
       alignment: 9
-      pivot: {x: 0.5717087, y: 0.050113495}
+      pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

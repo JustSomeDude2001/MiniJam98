@@ -18,15 +18,19 @@ public class CursorTracker : MonoBehaviour
     /// Real grid position of cursor.
     /// </summary>
     public static Vector3Int cursorPosReal;
+
+    public static Vector3 cursorPosScreen;
     public Grid grid;
     public Camera mainCam;
     [HideInInspector]
     public bool isOutOfBounds;
     
-    private void Update() {
-        Vector2 mousePos = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+    private void Update()
+    {
+        cursorPosScreen = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        cursorPosScreen.z = 0;
         bool newState = false;
-        cursorPos = (grid.WorldToCell(mousePos));
+        cursorPos = (grid.WorldToCell(cursorPosScreen));
         if (cursorPos.x < 0) {
             cursorPos.x = 0;
             newState = true;
