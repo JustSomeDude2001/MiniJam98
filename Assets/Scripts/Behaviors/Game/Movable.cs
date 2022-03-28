@@ -26,14 +26,14 @@ public class Movable : MonoBehaviour
         return speed.GetValue();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         float currentSpeed = GetSpeed();
         var newVelocity = direction * currentSpeed;
         selfRigidBody.velocity = newVelocity;
-        if (tag == "Player")
+        if (CompareTag("Player"))
         {
-            selfAnimator.SetBool("isIdle", !(newVelocity.sqrMagnitude > 0));
+            selfAnimator.SetBool(IsIdle, !(newVelocity.sqrMagnitude > 0));
             if (newVelocity.sqrMagnitude > 0)
             {
                 if (_previousVelocity == Vector2.zero)
@@ -49,4 +49,5 @@ public class Movable : MonoBehaviour
     }
 
     private Vector2 _previousVelocity = Vector2.zero;
+    private static readonly int IsIdle = Animator.StringToHash("isIdle");
 }
