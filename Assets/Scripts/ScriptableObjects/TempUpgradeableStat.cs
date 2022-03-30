@@ -8,8 +8,8 @@ public class TempUpgradeableStat : UpgradeableStat
     [System.NonSerialized]
     public static List <TempUpgradeableStat> knownTempUpgrades = new List<TempUpgradeableStat>();
 
-    [Tooltip("Cost of upgrading this stat.")]
-    public int upgradeCost;
+    [Tooltip("Costs of all the upgrades of this stat. Amount must match amount of values.")]
+    public List <int> costs;
 
     public override void Initialize()
     {
@@ -19,7 +19,7 @@ public class TempUpgradeableStat : UpgradeableStat
 
     public override bool CanUpgrade()
     {
-        if (Player.money < upgradeCost) {
+        if (Player.money < costs[nextLevel]) {
             return false;
         }
         if (GetCurrentLevel() >= upgradedValues.Count)
@@ -34,12 +34,12 @@ public class TempUpgradeableStat : UpgradeableStat
 
     public override int GetCost()
     {
-        return upgradeCost;
+        return costs[nextLevel];
     }
 
     public override void Upgrade()
     {
-        Player.money -= upgradeCost;
+        Player.money -= costs[nextLevel];
         nextLevel++;
     }
 }
