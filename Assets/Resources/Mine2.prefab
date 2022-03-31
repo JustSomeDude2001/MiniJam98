@@ -177,7 +177,7 @@ MonoBehaviour:
   size: 4
   rewardOnHit: 3
   rewardOnDestroy: 8
-  metaChance: 0.04
+  metaChance: 0.2
   audioSource: {fileID: 6127058497338095986}
   onMiningSound: {fileID: 8300000, guid: 8a9914193b80ded278c5b41a2a187f23, type: 3}
   onMetaPointGainSound: {fileID: 8300000, guid: 599a7164d8b4a79e4903c6708c264e48, type: 3}
