@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseValue: 0
   prerequisiteUpgrades: []
-  prerequisiteUpgradeLevels: 
+  prerequisiteUpgradeAmounts: 
   upgradedValues:
   - 0.1
   - 0.2
   - 0.3
-  costs: 190000001e00000023000000
+  costs: 4b0000005a00000069000000

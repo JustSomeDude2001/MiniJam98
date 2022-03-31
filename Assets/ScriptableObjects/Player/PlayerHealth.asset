@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PlayerHealth
   m_EditorClassIdentifier: 
   baseValue: 1
+  prerequisiteUpgrades: []
+  prerequisiteUpgradeAmounts: 
   upgradedValues:
   - 2
   - 3
-  prerequisiteUpgrades: []
-  prerequisiteUpgradeLevels: 
-  costs: 050000000a000000
+  costs: 0f0000001e000000
