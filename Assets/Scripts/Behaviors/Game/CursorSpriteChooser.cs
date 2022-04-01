@@ -10,7 +10,7 @@ public class CursorSpriteChooser : MonoBehaviour
     public CursorTracker cursorTracker;
     public Animator cursorAnimator;
     private static readonly int CanBuild = Animator.StringToHash("canBuild");
-    private static readonly int CanUpgrade = Animator.StringToHash("CanUpgrade");
+    private static readonly int CanUpgrade = Animator.StringToHash("canUpgrade");
 
     private void Start()
     {
@@ -23,6 +23,6 @@ public class CursorSpriteChooser : MonoBehaviour
         cursorAnimator.SetBool(CanBuild, builder.CanBuild());
         cursorAnimator.SetBool(CanUpgrade, upgrader.CanUpgrade());
         if (cursorTracker.isOutOfBounds)
-            cursorAnimator.SetBool(CanBuild, true);
+            cursorAnimator.SetBool(CanBuild, false);
     }
 }

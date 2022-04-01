@@ -63,8 +63,14 @@ public class BoardManager : MonoBehaviour
                     return;
                 }
                 newObject = Instantiate(targetObject, GridMatrix.selfGrid.CellToWorld(newPos) + GridMatrix.selfGrid.cellSize / 2f, Quaternion.identity);
-            } else {
-                newObject = Instantiate(targetObject, GridMatrix.GetRandomEdgePos(), Quaternion.identity);
+            } else
+            {
+                Vector3 newPosition = GridMatrix.GetRandomEdgePos();
+                while ((newPosition - Player.playerPos).magnitude < 1) // TO-DO Come up with something smart later
+                {
+                    newPosition = GridMatrix.GetRandomEdgePos();
+                }
+                newObject = Instantiate(targetObject, newPosition, Quaternion.identity);
             }
             lastSpawn = Time.time;
             TrackedOnManager tracker = newObject.AddComponent<TrackedOnManager>();
