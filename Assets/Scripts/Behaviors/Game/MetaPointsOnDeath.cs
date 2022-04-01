@@ -19,6 +19,7 @@ public class MetaPointsOnDeath : MonoBehaviour
             audioSource.clip = onMetaPointGainSound;
             audioSource.Play();
             Player.metaMoney += reward;
+            rewardDelivered = true;
         }
     }
 }
