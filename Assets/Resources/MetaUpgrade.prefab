@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fc528578493091ca9c2b60bda05058a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ySqueeze: 0.5
+  ySqueeze: 0.8
   ySqueezeDuration: 0.2
   target: {fileID: 2652627244565298300}
 --- !u!1 &1672805755727461261
