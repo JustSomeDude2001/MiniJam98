@@ -16,6 +16,8 @@ public class Destructible : MonoBehaviour
     public float dyingTime = 1;
     public bool dying = false;
 
+    public float invincibilityTime = 0;
+    
     [HideInInspector]
     public float lastAuraDamageTime;
     Animator myAnimator;
@@ -88,7 +90,10 @@ public class Destructible : MonoBehaviour
         }
     }
 
-    private void Update() {
+    private void Update()
+    {
+        if (invincibilityTime > 0)
+            invincibilityTime -= Time.deltaTime;
         if (dying == true) {
             dyingTime -= Time.deltaTime;
             if (dyingTime <= 0) {
@@ -97,7 +102,10 @@ public class Destructible : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage) {
+    public void TakeDamage(int damage)
+    {
+        if (invincibilityTime > 0)
+            return;
         ClampHealth();
         if (audioSource != null)
         {

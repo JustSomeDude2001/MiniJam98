@@ -9,6 +9,8 @@ public class Movable : MonoBehaviour
 {
     public Vector2 direction = Vector2.zero;
 
+    public float noMovementTime = 0;
+    
     public Stat speed;
 
     Rigidbody2D selfRigidBody;
@@ -23,11 +25,19 @@ public class Movable : MonoBehaviour
 
     public float GetSpeed()
     {
+        if (noMovementTime > 0)
+        {
+            return 0;
+        }
         return speed.GetValue();
     }
 
     private void FixedUpdate()
     {
+        if (noMovementTime > 0)
+        {
+            noMovementTime -= Time.fixedDeltaTime;
+        }
         float currentSpeed = GetSpeed();
         var newVelocity = direction * currentSpeed;
         selfRigidBody.velocity = newVelocity;
