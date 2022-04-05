@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 3343149822903409923}
   - component: {fileID: 8786583652229791992}
   - component: {fileID: 2602169227116227550}
+  - component: {fileID: -2061517946399032695}
   m_Layer: 0
   m_Name: Enemy0
   m_TagString: Enemy
@@ -256,9 +257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b901d8e97891e555d8c2cd6d1bebe64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currencySpawner: {fileID: -2061517946399032695}
   reward: 1
-  onMetaPointGainSound: {fileID: 8300000, guid: 599a7164d8b4a79e4903c6708c264e48, type: 3}
-  audioSource: {fileID: 8786583652229791992}
   destructible: {fileID: 7011518255842080426}
 --- !u!82 &8786583652229791992
 AudioSource:
@@ -374,6 +374,21 @@ MonoBehaviour:
   destructible: {fileID: 7011518255842080426}
   duration: 3
   maxFlashIntensity: 4
+--- !u!114 &-2061517946399032695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7011518255842080433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f9fdd766a12b4dab80a21c5c2082cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coreCoin: {fileID: 1672038744751764968, guid: 9dcfe2ecb0ca322ebab7508827a9fc8c, type: 3}
+  metaCoin: {fileID: 4172656530784649235, guid: fd90834a120ec2c9a9fef531ca4f2ff9, type: 3}
+  dispersionForce: 1
 --- !u!1001 &1911655532307687054
 PrefabInstance:
   m_ObjectHideFlags: 0

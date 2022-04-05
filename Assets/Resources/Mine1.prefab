@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 3520809668074945067}
   - component: {fileID: 1127206024315351874}
   - component: {fileID: 6871234311956712100}
+  - component: {fileID: -8393710562741436078}
   m_Layer: 0
   m_Name: Mine1
   m_TagString: Untagged
@@ -139,6 +140,7 @@ MonoBehaviour:
   maxHealth: {fileID: 11400000, guid: ea0afd0ad3510ecaa9e82d6e2da02b52, type: 2}
   dyingTime: 1
   dying: 0
+  invincibilityTime: 0
   lastAuraDamageTime: 0
   onCreateSound: {fileID: 0}
   onDestroySound: {fileID: 8300000, guid: a5bd2f160a39d80d2bbe3731a26be966, type: 3}
@@ -156,13 +158,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c84c42eb99d09f7d797b1262f586bb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currencySpawner: {fileID: -8393710562741436078}
   size: 4
   rewardOnHit: 2
   rewardOnDestroy: 5
   metaChance: 0.15
   audioSource: {fileID: 6871234311956712100}
   onMiningSound: {fileID: 8300000, guid: 8a9914193b80ded278c5b41a2a187f23, type: 3}
-  onMetaPointGainSound: {fileID: 8300000, guid: 599a7164d8b4a79e4903c6708c264e48, type: 3}
 --- !u!95 &7807465235928712782
 Animator:
   serializedVersion: 3
@@ -357,3 +359,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8393710562741436078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947729281216600245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f9fdd766a12b4dab80a21c5c2082cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coreCoin: {fileID: 1672038744751764968, guid: 9dcfe2ecb0ca322ebab7508827a9fc8c, type: 3}
+  metaCoin: {fileID: 4172656530784649235, guid: fd90834a120ec2c9a9fef531ca4f2ff9, type: 3}
+  dispersionForce: 1

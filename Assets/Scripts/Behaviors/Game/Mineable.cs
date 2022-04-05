@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class Mineable : MonoBehaviour
 {
+    public DropsCurrency currencySpawner;
+    
     /// <summary>
     /// Amount of mining cycles on mine.
     /// </summary>
@@ -28,7 +30,6 @@ public class Mineable : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip onMiningSound;
-    public AudioClip onMetaPointGainSound;
 
     private void Start()
     {
@@ -44,8 +45,7 @@ public class Mineable : MonoBehaviour
     /// </summary>
     private void CheckDepletion() {
         if (size <= 0) {
-            Player.money += rewardOnDestroy;
-            Player.moneyAllTime += rewardOnDestroy;
+            currencySpawner.DropCoreCoin(rewardOnDestroy);
             Destructible destructible = GetComponent<Destructible>();
             if (destructible != null) {
                 destructible.Heal(-destructible.GetMaxHealth());
@@ -65,19 +65,17 @@ public class Mineable : MonoBehaviour
             return;
         }
         size--;
-        Player.money += rewardOnHit;
-        Player.moneyAllTime += rewardOnHit;
-        if (Random.Range(0.0f, 1.0f) <= metaChance)
-        {
-            audioSource.clip = onMetaPointGainSound;
-            audioSource.Play();
-            Player.metaMoney++;
-        }
-
-        if (!audioSource.isPlaying) {
+        if (!audioSource.isPlaying)
+        { 
             audioSource.clip = onMiningSound;
             audioSource.Play();
         }
+        if (Random.Range(0.0f, 1.0f) <= metaChance)
+        {
+            currencySpawner.DropMetaCoin();
+        }
+        currencySpawner.DropCoreCoin(rewardOnHit);
+        
         CheckDepletion();
     }
 }

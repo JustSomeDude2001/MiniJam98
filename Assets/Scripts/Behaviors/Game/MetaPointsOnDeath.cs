@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class MetaPointsOnDeath : MonoBehaviour
 {
+    public DropsCurrency currencySpawner;
+    
     public int reward = 0;
-    public AudioClip onMetaPointGainSound;
-    public AudioSource audioSource;
     public Destructible destructible;
 
     private bool rewardDelivered = false;
@@ -16,9 +16,7 @@ public class MetaPointsOnDeath : MonoBehaviour
     {
         if (destructible.dying && !rewardDelivered)
         {
-            audioSource.clip = onMetaPointGainSound;
-            audioSource.Play();
-            Player.metaMoney += reward;
+            currencySpawner.DropMetaCoin(reward);
             rewardDelivered = true;
         }
     }

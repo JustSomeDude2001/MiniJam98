@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - DefaultGrid
   - Trap
+  - MetaCounter
   layers:
   - Default
   - TransparentFX
