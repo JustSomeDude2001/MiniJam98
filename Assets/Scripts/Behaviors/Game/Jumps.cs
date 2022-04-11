@@ -26,7 +26,8 @@ public class Jumps : MonoBehaviour
         selfMovable = GetComponent<Movable>();
         selfRenderer = GetComponent<SpriteRenderer>();
         selfOrderer = GetComponent<OrderedOnZ>();
-        duration = radius.GetValue() / selfMovable.GetSpeed();
+        duration = radius.GetValue() / selfMovable.speed.GetValue();
+        Debug.Log(duration);
     }
 
     public bool CanJump() {
@@ -34,14 +35,14 @@ public class Jumps : MonoBehaviour
             return false;
         }
 
-        if (isJumping == true) {
+        if (isJumping) {
             return false;
         }
         
         Vector3 offset = new Vector3(selfMovable.direction.x, selfMovable.direction.y, 0) * selfMovable.GetSpeed() * duration;
 
-        Vector3 newPos = offset + transform.position;
-        Vector3Int gridPos = GridMatrix.selfGrid.WorldToCell(newPos);
+        var newPos = offset + transform.position;
+        var gridPos = GridMatrix.selfGrid.WorldToCell(newPos);
 
         if (GridMatrix.GetObject(gridPos) == null) {
             return true;
