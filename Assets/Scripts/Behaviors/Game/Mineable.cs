@@ -48,7 +48,7 @@ public class Mineable : MonoBehaviour
             currencySpawner.DropCoreCoin(rewardOnDestroy);
             Destructible destructible = GetComponent<Destructible>();
             if (destructible != null) {
-                destructible.Heal(-destructible.GetMaxHealth());
+                destructible.TakeDamage(destructible.GetMaxHealth());
             } 
             else
             {

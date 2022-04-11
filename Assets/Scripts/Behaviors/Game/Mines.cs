@@ -17,6 +17,7 @@ public class Mines : MonoBehaviour
     [Tooltip("Set to visual-flair object (pickaxe) that indicates mined object")]
     public GameObject visualPickaxe;
 
+    
     public Mineable GetMineableInRadius() {
         for (int k = 0; k < radius; k++) {
             for (int i = -k; i <= k; i++) {
@@ -59,14 +60,15 @@ public class Mines : MonoBehaviour
         float elapsedTime = Time.time - lastMineOperation;
         if (elapsedTime >= miningCooldown.GetValue()) {
             Mineable target = GetMineableInRadius();
-            if (target != null) {
+            if (target != null && target.size > 0) {
                 target.Mine();
                 lastMineOperation = Time.time;
                 if (visualPickaxe != null) {
                     visualPickaxe.transform.position = target.transform.position;
                     visualPickaxe.SetActive(true);
                 }
-            } else {
+            } 
+            if (target == null || target.size <= 0) {
                 visualPickaxe.SetActive(false);
             }
         }
