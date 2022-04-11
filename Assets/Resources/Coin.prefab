@@ -51,7 +51,7 @@ MonoBehaviour:
   pickupRadius: 0.3
   isMeta: 0
   value: 1
-  velocity: 2
+  velocity: 4
   delay: 0.5
   ease: 4
   minDistance: 0.025
