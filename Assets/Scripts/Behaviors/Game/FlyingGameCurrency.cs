@@ -10,6 +10,9 @@ public class FlyingGameCurrency : MonoBehaviour
     private static Transform playerTransform;
     private static Transform metaCounterTransform;
 
+    public bool approachesOnPickup;
+    public float pickupRadius;
+    
     public bool isMeta;
 
     public int value;
@@ -96,6 +99,7 @@ public class FlyingGameCurrency : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        
         if (startedMovement && !movement.active)
         {
             if ((transform.position - getTarget()).magnitude > minDistance)
@@ -107,14 +111,18 @@ public class FlyingGameCurrency : MonoBehaviour
                 grantPoints();
             }
         }
-        if (delay > 0)
+        
+        if (delay > 0 && !approachesOnPickup)
         {
             delay -= Time.deltaTime;
         }
         else
         {
-            startedMovement = true;
-            ApproachTarget();
+            if (!approachesOnPickup || (approachesOnPickup && (transform.position - playerTransform.position).magnitude < pickupRadius))
+            {
+                startedMovement = true;
+                ApproachTarget();
+            }
         }
     }
 }
