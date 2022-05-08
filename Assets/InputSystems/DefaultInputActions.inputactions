@@ -14,7 +14,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Building",
+                    "name": "Building1",
                     "type": "Button",
                     "id": "6d53f79f-55ed-4056-9029-b7e64f9b399b",
                     "expectedControlType": "Button",
@@ -41,6 +41,22 @@
                     "name": "Pause",
                     "type": "Button",
                     "id": "7dfe9cdf-0121-46ec-83b8-f00a2051676a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Building2",
+                    "type": "Button",
+                    "id": "204ab628-2846-428a-b2b4-24578237d58f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Next",
+                    "type": "Button",
+                    "id": "2f3e424d-3bc6-4711-85d7-41d1293f852b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -109,7 +125,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Building",
+                    "action": "Building1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -143,6 +159,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2c76bbd-3556-43ac-9c90-6263052d09dd",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Building2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05db0165-4d6e-4dd7-9b3d-b85eb6b56862",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

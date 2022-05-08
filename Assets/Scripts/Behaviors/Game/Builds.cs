@@ -5,8 +5,6 @@ using UnityEngine;
 public class Builds : MonoBehaviour
 {
     public float buildingCooldown;
-    public GameObject building;
-    public int cost;
 
     public Animator selfAnimator;
 
@@ -30,7 +28,7 @@ public class Builds : MonoBehaviour
     /// Check if can build on gameObject's cell.
     /// </summary>
     /// <returns></returns>
-    public bool CanBuild() {
+    public bool CanBuild(int cost) {
         if (!isInRadius) {
             return false;
         }
@@ -55,10 +53,14 @@ public class Builds : MonoBehaviour
     [HideInInspector]
     public float lastBuild = -1;
 
-    public void Build() {
-        if (CanBuild()) {
-            Instantiate(building, transform.position, Quaternion.identity);
-            Player.money -= cost;
+    public int curCost = 1;
+    
+    public void BuildSpecific(GameObject building)
+    {
+        curCost = 1;
+        if (CanBuild(curCost)) {
+            var newBuilding = Instantiate(building, transform.position, Quaternion.identity);
+            Player.money -= curCost;
             lastBuild = Time.time;
         }
         else if (!cursorTracker.isOutOfBounds)

@@ -18,4 +18,4 @@ MonoBehaviour:
   upgradedValues:
   - 2
   - 3
-  costs: 0f0000001e000000
+  costs: 1e0000000f000000

@@ -27,7 +27,7 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Building"",
+                    ""name"": ""Building1"",
                     ""type"": ""Button"",
                     ""id"": ""6d53f79f-55ed-4056-9029-b7e64f9b399b"",
                     ""expectedControlType"": ""Button"",
@@ -54,6 +54,22 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                     ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""7dfe9cdf-0121-46ec-83b8-f00a2051676a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Building2"",
+                    ""type"": ""Button"",
+                    ""id"": ""204ab628-2846-428a-b2b4-24578237d58f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Next"",
+                    ""type"": ""Button"",
+                    ""id"": ""2f3e424d-3bc6-4711-85d7-41d1293f852b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -122,7 +138,7 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Building"",
+                    ""action"": ""Building1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -158,6 +174,28 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b2c76bbd-3556-43ac-9c90-6263052d09dd"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Building2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""05db0165-4d6e-4dd7-9b3d-b85eb6b56862"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Next"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -167,10 +205,12 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
         // PlayerControls
         m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
         m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
-        m_PlayerControls_Building = m_PlayerControls.FindAction("Building", throwIfNotFound: true);
+        m_PlayerControls_Building1 = m_PlayerControls.FindAction("Building1", throwIfNotFound: true);
         m_PlayerControls_Deleting = m_PlayerControls.FindAction("Deleting", throwIfNotFound: true);
         m_PlayerControls_MetaUpgrade = m_PlayerControls.FindAction("MetaUpgrade", throwIfNotFound: true);
         m_PlayerControls_Pause = m_PlayerControls.FindAction("Pause", throwIfNotFound: true);
+        m_PlayerControls_Building2 = m_PlayerControls.FindAction("Building2", throwIfNotFound: true);
+        m_PlayerControls_Next = m_PlayerControls.FindAction("Next", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -221,19 +261,23 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
     private readonly InputActionMap m_PlayerControls;
     private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
     private readonly InputAction m_PlayerControls_Movement;
-    private readonly InputAction m_PlayerControls_Building;
+    private readonly InputAction m_PlayerControls_Building1;
     private readonly InputAction m_PlayerControls_Deleting;
     private readonly InputAction m_PlayerControls_MetaUpgrade;
     private readonly InputAction m_PlayerControls_Pause;
+    private readonly InputAction m_PlayerControls_Building2;
+    private readonly InputAction m_PlayerControls_Next;
     public struct PlayerControlsActions
     {
         private @DefaultInputActions m_Wrapper;
         public PlayerControlsActions(@DefaultInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
-        public InputAction @Building => m_Wrapper.m_PlayerControls_Building;
+        public InputAction @Building1 => m_Wrapper.m_PlayerControls_Building1;
         public InputAction @Deleting => m_Wrapper.m_PlayerControls_Deleting;
         public InputAction @MetaUpgrade => m_Wrapper.m_PlayerControls_MetaUpgrade;
         public InputAction @Pause => m_Wrapper.m_PlayerControls_Pause;
+        public InputAction @Building2 => m_Wrapper.m_PlayerControls_Building2;
+        public InputAction @Next => m_Wrapper.m_PlayerControls_Next;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -246,9 +290,9 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                 @Movement.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMovement;
-                @Building.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnBuilding;
-                @Building.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnBuilding;
-                @Building.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnBuilding;
+                @Building1.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnBuilding1;
+                @Building1.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnBuilding1;
+                @Building1.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnBuilding1;
                 @Deleting.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnDeleting;
                 @Deleting.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnDeleting;
                 @Deleting.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnDeleting;
@@ -258,6 +302,12 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnPause;
+                @Building2.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnBuilding2;
+                @Building2.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnBuilding2;
+                @Building2.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnBuilding2;
+                @Next.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnNext;
+                @Next.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnNext;
+                @Next.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnNext;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -265,9 +315,9 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
-                @Building.started += instance.OnBuilding;
-                @Building.performed += instance.OnBuilding;
-                @Building.canceled += instance.OnBuilding;
+                @Building1.started += instance.OnBuilding1;
+                @Building1.performed += instance.OnBuilding1;
+                @Building1.canceled += instance.OnBuilding1;
                 @Deleting.started += instance.OnDeleting;
                 @Deleting.performed += instance.OnDeleting;
                 @Deleting.canceled += instance.OnDeleting;
@@ -277,6 +327,12 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @Building2.started += instance.OnBuilding2;
+                @Building2.performed += instance.OnBuilding2;
+                @Building2.canceled += instance.OnBuilding2;
+                @Next.started += instance.OnNext;
+                @Next.performed += instance.OnNext;
+                @Next.canceled += instance.OnNext;
             }
         }
     }
@@ -284,9 +340,11 @@ public class @DefaultInputActions : IInputActionCollection, IDisposable
     public interface IPlayerControlsActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnBuilding(InputAction.CallbackContext context);
+        void OnBuilding1(InputAction.CallbackContext context);
         void OnDeleting(InputAction.CallbackContext context);
         void OnMetaUpgrade(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnBuilding2(InputAction.CallbackContext context);
+        void OnNext(InputAction.CallbackContext context);
     }
 }

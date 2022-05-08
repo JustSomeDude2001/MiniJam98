@@ -14,8 +14,12 @@ public class LoadsScene : MonoBehaviour
     
     public void Load()
     {
-        audioSource.clip = onLoadSound;
-        audioSource.Play();
+        if (audioSource != null)
+        {
+            audioSource.clip = onLoadSound;
+            audioSource.Play();
+        }
+
         started = true;
     }
 

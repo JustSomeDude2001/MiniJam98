@@ -20,7 +20,7 @@ public class CursorSpriteChooser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        cursorAnimator.SetBool(CanBuild, builder.CanBuild());
+        cursorAnimator.SetBool(CanBuild, builder.CanBuild(builder.curCost));
         cursorAnimator.SetBool(CanUpgrade, upgrader.CanUpgrade());
         if (cursorTracker.isOutOfBounds)
             cursorAnimator.SetBool(CanBuild, false);

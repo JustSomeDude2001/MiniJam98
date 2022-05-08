@@ -17,5 +17,5 @@ MonoBehaviour:
   prerequisiteUpgradeAmounts: 
   upgradedValues:
   - 50
-  costs: f4010000
+  costs: 64000000
   victoryScene: VictoryScene
