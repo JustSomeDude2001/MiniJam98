@@ -13,12 +13,20 @@ public class Movable : MonoBehaviour
     
     public Stat speed;
 
+    public float speed_variety = 0;
+    
+    private float speedMultiplier = 1;
+
     Rigidbody2D selfRigidBody;
     Animator selfAnimator;
     [SerializeField] private ParticleSystem Dust;
 
     private void Start()
     {
+        if (speed_variety > 0)
+        {
+            speedMultiplier += Random.Range(-speed_variety, +speed_variety);
+        }
         selfRigidBody = GetComponent<Rigidbody2D>();
         selfAnimator = GetComponent<Animator>();
     }
@@ -29,7 +37,7 @@ public class Movable : MonoBehaviour
         {
             return 0;
         }
-        return speed.GetValue();
+        return speed.GetValue() * speedMultiplier;
     }
 
     private void FixedUpdate()

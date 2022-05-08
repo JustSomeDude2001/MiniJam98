@@ -151,6 +151,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   noMovementTime: 0
   speed: {fileID: 11400000, guid: 815a8c6ef2910db4fbaff0a3f2532477, type: 2}
+  speed_variety: 0.5
   Dust: {fileID: 0}
 --- !u!114 &7011518255842080428
 MonoBehaviour:
